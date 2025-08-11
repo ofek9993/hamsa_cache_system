@@ -1,0 +1,4 @@
+-nocopyright
+-unbuffered
+-cdslib /project/tsmc65/users/sharabo/ws/ddp23/sim/helloworld/./xcelium.d/run.lnx8664.23.09.d/cdsrun.lib
+-hdlvar /project/tsmc65/users/sharabo/ws/ddp23/sim/helloworld/./xcelium.d/run.lnx8664.23.09.d/hdlrun.var
