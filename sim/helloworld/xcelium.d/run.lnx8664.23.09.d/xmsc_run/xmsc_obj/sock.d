@@ -1,2 +1,0 @@
-sock.o: \
- /data/project/tsmc65/users/sharabo/ws/ddp23/ddp23_pnx/src/tb/py_spi_tb/sv/sock.c  /tools/cadence/XCELIUM/23.09.013/tools.lnx86/cdsgcc/gcc/9.3/install/lib/gcc/x86_64-redhat-linux/9.3.0/include/stddef.h  /tools/cadence/XCELIUM/23.09.013/tools.lnx86/cdsgcc/gcc/9.3/install/lib/gcc/x86_64-redhat-linux/9.3.0/include/stdarg.h  /tools/cadence/XCELIUM/23.09.013/tools.lnx86/cdsgcc/gcc/9.3/install/include/c++/9.3.0/stdlib.h 

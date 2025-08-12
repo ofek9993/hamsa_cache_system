@@ -910,30 +910,30 @@ module Xcore_region
   //   .ram_ctrl        ( ram_ctrl[INSTR_MEM_CTRL_DW-1:0] )
   // );
 
-  // axi_mem_if_SP_async_wrap
-  // #(
-  //   .AXI_ADDR_WIDTH  ( AXI_ADDR_WIDTH         ),
-  //   .AXI_DATA_WIDTH  ( AXI_DATA_WIDTH         ),
-  //   .AXI_ID_WIDTH    ( AXI_ID_SLAVE_WIDTH     ),
-  //   .AXI_USER_WIDTH  ( AXI_USER_WIDTH         ),
-  //   .MEM_ADDR_WIDTH  ( INSTR_ADDR_WIDTH       )
-  // )
-  // instr_mem_axi_if
-  // (
-  //   .clk         ( clk               ),
-  //   .rst_n       ( rst_n             ),
-  //   .test_en_i   ( testmode_i        ),
+   axi_mem_if_SP_async_wrap
+   #(
+     .AXI_ADDR_WIDTH  ( AXI_ADDR_WIDTH         ),
+     .AXI_DATA_WIDTH  ( AXI_DATA_WIDTH         ),
+     .AXI_ID_WIDTH    ( AXI_ID_SLAVE_WIDTH     ),
+     .AXI_USER_WIDTH  ( AXI_USER_WIDTH         ),
+     .MEM_ADDR_WIDTH  ( INSTR_ADDR_WIDTH       )
+   )
+   instr_mem_axi_if
+   (
+     .clk         ( clk               ),
+     .rst_n       ( rst_n             ),
+     .test_en_i   ( testmode_i        ),
 
-  //   .mem_grant_i ( axi_instr_grant   ),
-  //   .mem_req_o   ( axi_instr_req     ),
-  //   .mem_addr_o  ( axi_instr_addr    ),
-  //   .mem_we_o    ( axi_instr_we      ),
-  //   .mem_be_o    ( axi_instr_be      ),
-  //   .mem_rdata_i ( axi_instr_rdata   ),
-  //   .mem_wdata_o ( axi_instr_wdata   ),
+     .mem_grant_i ( axi_instr_grant   ),
+     .mem_req_o   ( axi_instr_req     ),
+     .mem_addr_o  ( axi_instr_addr    ),
+     .mem_we_o    ( axi_instr_we      ),
+     .mem_be_o    ( axi_instr_be      ),
+     .mem_rdata_i ( axi_instr_rdata   ),
+     .mem_wdata_o ( axi_instr_wdata   ),
 
-  //   .slave       ( instr_slave       )
-  // );
+     .slave       ( instr_slave       )
+   );
 
   // localparam INSTR_RAM_MUX_OUT_WIDTH = (AXI_DATA_WIDTH>INSTR_RAM_WIDTH) ? AXI_DATA_WIDTH : INSTR_RAM_WIDTH ;
 
