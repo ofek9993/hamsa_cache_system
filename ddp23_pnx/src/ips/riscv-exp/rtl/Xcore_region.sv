@@ -744,7 +744,7 @@ module Xcore_region
 
     .axi_slave  ( core_master_int ),
     .axi_master ( core_master     )
-  );
+  );//ofek changes
 
   //----------------------------------------------------------------------------//
   // DATA-DEMUX
