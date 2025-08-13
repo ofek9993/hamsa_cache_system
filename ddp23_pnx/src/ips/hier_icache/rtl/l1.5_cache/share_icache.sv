@@ -158,7 +158,7 @@ localparam DATARAM_ADDR_WIDTH = $clog2(DATARAM_NROWS);
 
 localparam TAGRAM_ADDR_NROWS  = CACHE_SIZE*8/(SET_ASSOCIATIVE*DATARAM_DATA_WIDTH);
 localparam TAGRAM_ADDR_WIDTH  = $clog2(TAGRAM_ADDR_NROWS);
-
+localparam AXI_DELAY_SHIFT_REG_LEN = (CACHE_LINE*ICACHE_DATA_WIDTH)/AXI_DATA; 
 
 localparam TAGRAM_DATA_WIDTH  = (USE_REDUCED_TAG == "TRUE") ?  (REDUCE_TAG_WIDTH + 1)  :   (ICACHE_ADDR_WIDTH - OFFSET_BIT - $clog2(CACHE_LINE) -$clog2(N_BANKS) - TAGRAM_ADDR_WIDTH + 1);
 
@@ -250,8 +250,9 @@ initial
    //AXI BACKWARD read data bus ----------------------------------------------
    logic [AXI_ID-1:0]                                            init_rid_int;
    logic [CACHE_LINE-1:0][ICACHE_DATA_WIDTH-1:0]                 init_rdata_int;
-   logic [1:0][AXI_DATA-1:0]                                     init_rdata_delay;
-   logic                                                         init_rdata_index;
+   // changes
+   logic [AXI_DELAY_SHIFT_REG_LEN-1:0][AXI_DATA-1:0]             init_rdata_delay;  // 2D vec with of len of axi transaction len. it is calc as (num of cache line * cache data width )/axi data width -1 
+                                                                                     //so in our case if we have 1 line and cache of 128 and axi 32bit width we have a vec of 128/32 -1 = 3 meaning 4 slots (0-3) of each one is axi data width len. this basiclly holds our data from ram
    logic [ 1:0]                                                  init_rresp_int;
    logic                                                         init_rlast_int;
    logic [ AXI_USER-1:0]                                         init_ruser_int;
@@ -429,8 +430,8 @@ endgenerate
        $display("@%0dns shared icache ready_2_valid assertion Failed", $time);
    `endif
 
-   // Wait two 64 bits to combine 128 data//
-   assign init_rdata_int  = {init_rdata_delay[1], init_rdata_delay[0]};
+   // Wait for AXI beats to combine cache width data size//
+   assign init_rdata_int  = init_rdata_delay;
    assign init_rready_int = ~init_rvalid_int;
 
    always_ff @(posedge clk, negedge rst_n)
@@ -439,15 +440,14 @@ endgenerate
           begin
              init_rdata_delay <= '0;
              init_rvalid_int  <= '0;
-
-             init_rdata_index <= '0;
           end
         else
           begin
              if(init_rvalid_i & init_rready_int)
                begin
-                  init_rdata_delay[init_rdata_index] <= init_rdata_i;
-                  init_rdata_index                   <=  ~init_rdata_index;
+                  // Assumes: logic [WORDS-1:0][AXI_DATA-1:0] init_rdata_delay;
+                  init_rdata_delay <= {init_rdata_i, init_rdata_delay[AXI_DELAY_SHIFT_REG_LEN-1:1]};// shift reg to get the streams of beats correctly/
+
                end
 
              if(init_rvalid_i & init_rlast_i)
