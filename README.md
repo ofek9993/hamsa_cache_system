@@ -1,2 +1,1 @@
-first block digram of the basic Xcore region after cache changes : 
-<img width="1788" height="904" alt="image" src="https://github.com/user-attachments/assets/f6eb57f3-f6fa-48b1-a793-c7d4617f6bfc" />
+our project is to implement the PULP new cache system into hamsa dual issue risc v processor. for more information about cache system look at https://github.com/pulp-platform/hier-icache/tree/master
