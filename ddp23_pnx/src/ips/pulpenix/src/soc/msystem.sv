@@ -220,7 +220,7 @@ module msystem #(parameter MEM_CTRL_VEC_DW = 32)
    OPENOCD_JTAG openocd_jtag();
  
    parameter DATA_RAM_SIZE        = 192*1024 ; // in bytes (192KB)
-   parameter INSTR_RAM_SIZE       = 120*1024 ; // in bytes (120KB)
+   parameter INSTR_RAM_SIZE       = 192*1024 ; // in bytes (192KB) // change here so sram inst memory will be of chunks 32bits for axi 
 
    localparam INSTR_ADDR_WIDTH = $clog2(INSTR_RAM_SIZE)+1; // to make space for the boot ROM
    localparam DATA_ADDR_WIDTH  = $clog2(DATA_RAM_SIZE);
