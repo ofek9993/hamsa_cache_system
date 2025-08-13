@@ -85,15 +85,15 @@ module Xcore_region
  
   localparam MIN_XBOX_TCM_DMEM   = `MIN_XBOX_TCM_DMEM  ;
   localparam MAX_XBOX_TCM_DMEM   = `MAX_XBOX_TCM_DMEM  ;
-
-  `ifdef HAMSA_DIX  // Dual-Issue Logic optional instantiation
-  localparam INSTR_RDATA_WIDTH = 128 ; // for DI INSTR_RDATA_WIDTH Must be multiples of 128 (initially 128)
-  localparam HAMSA_INSTR_MUX = 4;
+  `ifdef HAMSA_DIX
+    localparam INSTR_RDATA_WIDTH = 32;//!!!!!!we changed it from 128 to 32 for our cache test!!!!
+    localparam HAMSA_INSTR_MUX   = 16;//!!!!!!changed it from 4 to 16 for our cache test!!!!!!
+    localparam CORE_INSTR_RDATA_WIDTH=128;// added this to be more informative of core issue mode
   `else
-  localparam INSTR_RDATA_WIDTH = 32 ;  // compatible with original hard coded width
-  localparam HAMSA_INSTR_MUX = 16;
+    localparam INSTR_RDATA_WIDTH = 32;
+    localparam HAMSA_INSTR_MUX   = 16;
+    localparam CORE_INSTR_RDATA_WIDTH=32;// added this to be more informative of core issue mode
   `endif
-
   // Mem Config
  
   localparam DATA_RAM_WIDTH  = 32;
@@ -287,7 +287,7 @@ module Xcore_region
   
   logic is_xbox_tcm_dmem_addr;
 
-  logic [INSTR_RDATA_WIDTH-1:0] sh_fetch_data;
+  logic [128-1:0] sh_fetch_data;
 
   // ICACHE //
   localparam SH_NB_BANKS  = 1;
@@ -297,7 +297,7 @@ module Xcore_region
   logic [31:0] icache_addr_i;
   logic icache_gnt_o;
   logic icache_rvalid_o;
-  logic [INSTR_RDATA_WIDTH-1:0] icache_rdata_o; // The cache outputs a 128-bit wide bus for dual issue
+  logic [128-1:0] icache_rdata_o; // The cache outputs a 128-bit wide bus for dual issue
 
   // icache control busses//
   SP_ICACHE_CTRL_UNIT_BUS icache_ctrl_main[SH_NB_BANKS] ();
@@ -410,7 +410,7 @@ module Xcore_region
     //Xriscv_core
     riscv_core // in ddp23_pnx_there is only one core which is riscv_core
     #(
-      .INSTR_RDATA_WIDTH   (INSTR_RDATA_WIDTH),
+      .INSTR_RDATA_WIDTH   (CORE_INSTR_RDATA_WIDTH),
       .IMEM_BASE           (`MIN_XCORE_IMEM), // Added in order to optimally distinguish at hamsa_prefetch between TCM and AXI access  
       .IMEM_MASK           (`MIN_XCORE_IMEM^`MAX_XCORE_IMEM),  
       .N_EXT_PERF_COUNTERS (     0       ),
@@ -498,10 +498,10 @@ module Xcore_region
     .SH_CACHE_SIZE         (4*1024),      // 4KB L2 cache
     .PRI_NB_WAYS           (2),           // 2-way set associative L1
     .PRI_CACHE_SIZE        (512),         // 512B L1 cache
-    .AXI_ID                (10),          // Use the same AXI parameters as your core_master
-    .AXI_ADDR              (32),
-    .AXI_DATA              (64),          // The AXI bus is 64-bit wide
-    .AXI_USER              (0)
+    .AXI_ID                (AXI_ID_MASTER_WIDTH),          // Use the same AXI parameters as your core_master
+    .AXI_ADDR              (AXI_ADDR_WIDTH),
+    .AXI_DATA              (AXI_DATA_WIDTH),          // The AXI bus is 64-bit wide
+    .AXI_USER              (AXI_USER_WIDTH)
   )
   i_icache_top 
   (
@@ -577,37 +577,6 @@ module Xcore_region
   );
 
   //----------------------------------------------------------------------------//
-  // PULP hier_icache - NEW core2axi for icache
-  //----------------------------------------------------------------------------//
-
-  // core2axi_wrap
-  // #(
-  //   .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
-  //   .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-  //   .AXI_ID_WIDTH     ( AXI_ID_MASTER_WIDTH ),
-  //   .AXI_USER_WIDTH   ( AXI_USER_WIDTH      ),
-  //   .REGISTERED_GRANT ( "FALSE"             )
-  // )
-  // core2axi_icache_i
-  // (
-  //   .clk_i         ( clk             ),
-  //   .rst_ni        ( rst_n           ),
-
-  //   .data_req_i    ( core_axi_i_req    ),
-  //   .data_gnt_o    ( core_axi_i_gnt    ),
-  //   .data_rvalid_o ( core_axi_i_rvalid ),
-  //   .data_addr_i   ( core_axi_i_addr   ),
-  //   .data_we_i     ( core_axi_i_we     ),
-  //   .data_be_i     ( core_axi_i_be     ),
-  //   .data_rdata_o  ( core_axi_i_rdata  ),
-  //   .data_wdata_i  ( core_axi_i_wdata  ),
-
-  //   .master        ( axi_master_int[0] ),
-
-  //   .core_clock_en ( clock_gating_i  )
-  // );
-
-  //----------------------------------------------------------------------------//
   // PULP hier_icache - NEW core2axi for data path
   //----------------------------------------------------------------------------//
 
@@ -665,20 +634,9 @@ module Xcore_region
     .mst   ( arbiter_output_int  )
   );
 
-  // axi_arbiter_fixed  #(
-  //   .AXI_ID_WIDTH    ( MST_ID_W       ),
-  //   .AXI_ADDR_WIDTH  ( AXI_ADDR_WIDTH ),
-  //   .AXI_DATA_WIDTH  ( AXI_DATA_WIDTH ),
-  //   .AXI_USER_WIDTH  ( AXI_USER_WIDTH )
-  // )
-  // axi_arbiter_i (
-  //   .clk(clk),
-  //   .rst_n(rst_n),
-  //   .s_icache(axi_master_int[0]), // Connect your icache master
-  //   .s_data(data_master_int),     // Connect your data master
-  //   .m_out(arbiter_output_int)    // Connect to the arbiter's output
-  // );
-
+  //----------------------------------------------------------------------------//
+  // PULP hier_icache - NEW axi bridge needed because plup team changed there axi bus proc to be without monitor modport
+  //----------------------------------------------------------------------------//
 
   axi_intf_to_bus_bridge #(
     .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
@@ -689,39 +647,12 @@ module Xcore_region
   final_axi_bridge 
   (
     .s_axi(arbiter_output_int),
-    .m_axi(core_master_int) // Check inside: AXI_BUS and AXI_BUS_INTF inputs
+    .m_axi(core_master_int) 
   );
 
   // NO DATA/INSTR CACHE IN FPGNIX	
   assign data_cache_en_o = 0 ;  
   assign instr_cache_en_o = 0 ; 
-
-  // core2axi_wrap
-  // #(
-  //   .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
-  //   .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-  //   .AXI_ID_WIDTH     ( AXI_ID_MASTER_WIDTH ),
-  //   .AXI_USER_WIDTH   ( AXI_USER_WIDTH      ),
-  //   .REGISTERED_GRANT ( "FALSE"             )
-  // )
-  // core2axi_i
-  // (
-  //   .clk_i         ( clk             ),
-  //   .rst_ni        ( rst_n           ),
-
-  //   .data_req_i    ( core_axi_req    ),
-  //   .data_gnt_o    ( core_axi_gnt    ),
-  //   .data_rvalid_o ( core_axi_rvalid ),
-  //   .data_addr_i   ( core_axi_addr   ),
-  //   .data_we_i     ( core_axi_we     ),
-  //   .data_be_i     ( core_axi_be     ),
-  //   .data_rdata_o  ( core_axi_rdata  ),
-  //   .data_wdata_i  ( core_axi_wdata  ),
-
-  //   .master        ( core_master_int ),
-
-  //   .core_clock_en ( clock_gating_i  )
-  // );
 
   //----------------------------------------------------------------------------//
   // AXI Slices
@@ -744,7 +675,7 @@ module Xcore_region
 
     .axi_slave  ( core_master_int ),
     .axi_master ( core_master     )
-  );//ofek changes
+  );
 
   //----------------------------------------------------------------------------//
   // DATA-DEMUX
@@ -788,195 +719,57 @@ module Xcore_region
   // route response back to LSU
   assign core_lsu_rdata  = (lsu_resp_CS == AXI) ? core_axi_d_rdata : core_data_rdata;
   assign core_lsu_rvalid = core_axi_d_rvalid | core_data_rvalid;
-
-  //----------------------------------------------------------------------------//
-  // INSTRUCTION-DEMUX
-  //----------------------------------------------------------------------------//
-  // logic is_imem_addr;
-  // logic core_instr_rvalid_pending;
-  // assign is_imem_addr   = (core_instr_addr & IMEM_MASK) == IMEM_BASE;
-  // assign core_imem_req  =      ( is_imem_addr) && core_instr_req && (!core_instr_rvalid_pending || (instr_resp==RAM));
-  // assign core_axi_i_wide_req = (!is_imem_addr) && core_instr_req && (!core_instr_rvalid_pending || (instr_resp==AXI));
-
-  // assign core_axi_i_wide_addr    = core_instr_addr;
-  // assign core_axi_i_narrow_we      = 1'h0;
-  // assign core_axi_i_narrow_be      = 4'hf;
-  // assign core_axi_i_narrow_wdata   = 32'h0;
-
-  // assign core_imem_addr    = core_instr_addr;
-
-  // assign core_instr_gnt    = (core_axi_i_wide_req)    ? core_axi_i_wide_gnt    : core_imem_gnt;
-
-  // always @(posedge clk or negedge rst_n)
-  //     if (!rst_n)
-  //         core_instr_rvalid_pending <= 1'b0;
-  //     else begin
-  //         if (core_instr_req && core_instr_gnt) //assume rvalid of this gnt will arrive later
-  //             core_instr_rvalid_pending <= 1'b1;
-  //         else if (core_instr_rvalid)
-  //             core_instr_rvalid_pending <= 1'b0;
-  //     end
-
-
-  // // figure out where the next response will be coming from
-  // always @(posedge clk or negedge rst_n)
-  //     if (!rst_n)
-  //         instr_resp <= RAM;
-  //     else begin
-  //         if (core_instr_req && !core_instr_rvalid_pending)
-  //             if (is_imem_addr)
-  //                 instr_resp <= RAM;
-  //             else
-  //                 instr_resp <= AXI;
-  //     end
-
-  // assign core_instr_rdata  = (instr_resp == AXI) ? core_axi_i_wide_rdata  : core_imem_rdata;
-  // assign core_instr_rvalid = (instr_resp == AXI) ? core_axi_i_wide_rvalid : core_imem_rvalid;
-
-  //----------------------------------------------------------------------------//
-  // Instruction Narrower
-  //----------------------------------------------------------------------------//
-  // inst_narrower inst_narrower(
-  //     .clk(clk),
-  //     .rst_n(rst_n),
-  //     .core_axi_i_wide_req(core_axi_i_wide_req),
-  //     .core_axi_i_wide_addr(core_axi_i_wide_addr),
-  //     .core_axi_i_wide_gnt(core_axi_i_wide_gnt),
-  //     .core_axi_i_wide_rvalid(core_axi_i_wide_rvalid),
-  //     .core_axi_i_wide_rdata(core_axi_i_wide_rdata),
-  //     .core_axi_i_narrow_req(core_axi_i_narrow_req),
-  //     .core_axi_i_narrow_addr(core_axi_i_narrow_addr),
-  //     .core_axi_i_narrow_gnt(core_axi_i_narrow_gnt),
-  //     .core_axi_i_narrow_rvalid(core_axi_i_narrow_rvalid),
-  //     .core_axi_i_narrow_rdata(core_axi_i_narrow_rdata)
-  // );
-
-  //----------------------------------------------------------------------------//
-  // Instruction RAM
-  //----------------------------------------------------------------------------//
-
-  // // NO Instr Cache
-  // // input for ram_mux
-  // assign instr_ram_req    = core_imem_req;
-  // assign instr_ram_addr   = core_imem_addr;
-
-  // // output from ram_mux
-  // assign core_imem_gnt    = instr_ram_gnt;
-  // assign core_imem_rvalid = instr_ram_rvalid;
-  // assign core_imem_rdata  = instr_ram_rdata;
-
   typedef enum logic {SRAM=1'b0, XBOX_TCM_DMEM=1'b1} xcore_ram_type_t;
 
-  
-  // // signals to/from instr mem mux
-  // logic                          instr_mem_en_mux;
-  // logic [INSTR_RAM_WIDTH-1:0]    instr_mem_rdata_mux;
-  // logic                          instr_mem_rready_mux;
-  // logic                          instr_mem_wready_mux;
+  //----------------------------------------------------------------------------//
+  // AXI TO <-> SRAM TRANSACTIONS 
+  //----------------------------------------------------------------------------//
 
-  // // No instr edram in fpgnix
+// AXI <-> simple single-port mem bridge (memory always “ready”)
+axi_mem_if_SP_async_wrap #(
+  .AXI_ADDR_WIDTH  ( AXI_ADDR_WIDTH     ),
+  .AXI_DATA_WIDTH  ( AXI_DATA_WIDTH     ),
+  .AXI_ID_WIDTH    ( AXI_ID_SLAVE_WIDTH ),
+  .AXI_USER_WIDTH  ( AXI_USER_WIDTH     ),
+  .MEM_ADDR_WIDTH  ( INSTR_ADDR_WIDTH   )
+) instr_mem_axi_if (
+  .clk         ( clk               ),
+  .rst_n       ( rst_n             ),
+  .test_en_i   ( testmode_i        ),
 
-  // assign instr_mem_rready_mux = 1'b1;
-  // assign instr_mem_wready_mux = 1'b1;
-  
-  
-  // assign iedram_apb.prdata  = 0;
-  // assign iedram_apb.pready  = 1;
-  // assign iedram_apb.pslverr = 0;
-  
-  // assign instr_mem_en_mux       = instr_mem_en;
-  // assign instr_mem_rdata_mux    = instr_mem_rdata; 
+  .mem_grant_i ( 1'b1              ), // minimal: SRAM is always ready
+  .mem_req_o   ( axi_instr_req     ),
+  .mem_addr_o  ( axi_instr_addr    ),
+  .mem_we_o    ( axi_instr_we      ),
+  .mem_be_o    ( axi_instr_be      ),
+  .mem_rdata_i ( instr_mem_rdata   ),
+  .mem_wdata_o ( axi_instr_wdata   ),
 
+  .slave       ( instr_slave       )
+);
 
-  // instr_ram_wrap
-  // #(
-  //   .RAM_SIZE    ( INSTR_RAM_SIZE    ),
-  //   .DATA_WIDTH  ( INSTR_RAM_WIDTH   ),
-  //   .MEM_CTRL_DW ( INSTR_MEM_CTRL_DW ),
-  //   .MEM_MUX     ( INSTR_RAM_MUX     )
-  // )
-  // instr_mem
-  // (
-  //   .clk         ( clk             ),
-  //   .rst_n       ( rst_n           ),
-  //   .en_i        ( instr_mem_en_mux),
-  //   .addr_i      ( {1'b0,instr_mem_addr[INSTR_ADDR_WIDTH-2:0]} ),
-  //   .wdata_i     ( instr_mem_wdata ),
-  //   .rdata_o     ( instr_mem_rdata ),
-  //   .we_i        ( instr_mem_we    ),
-  //   .be_i        ( instr_mem_be    ),
-  //   .bypass_en_i ( testmode_i      ),
+// Directly drive instr RAM from the AXI bridge
+instr_ram_wrap #(
+  .RAM_SIZE    ( INSTR_RAM_SIZE    ),
+  .DATA_WIDTH  ( INSTR_RAM_WIDTH   ),
+  .MEM_CTRL_DW ( INSTR_MEM_CTRL_DW ),
+  .MEM_MUX     ( INSTR_RAM_MUX     )
+) instr_mem (
+  .clk         ( clk ),
+  .rst_n       ( rst_n ),
+  .en_i        ( axi_instr_req ),
+  // same address shaping as before: beat->byte zeros + force MSB=0
+  .addr_i      ( { 1'b0,
+                   axi_instr_addr[INSTR_ADDR_WIDTH-AXI_B_WIDTH-2:0],
+                   {AXI_B_WIDTH{1'b0}} } ),
+  .wdata_i     ( axi_instr_wdata ),
+  .rdata_o     ( instr_mem_rdata ),
+  .we_i        ( axi_instr_we ),
+  .be_i        ( axi_instr_be ),
+  .bypass_en_i ( testmode_i ),
+  .ram_ctrl    ( ram_ctrl[INSTR_MEM_CTRL_DW-1:0] )
+);
 
-  //   .ram_ctrl        ( ram_ctrl[INSTR_MEM_CTRL_DW-1:0] )
-  // );
-
-   axi_mem_if_SP_async_wrap
-   #(
-     .AXI_ADDR_WIDTH  ( AXI_ADDR_WIDTH         ),
-     .AXI_DATA_WIDTH  ( AXI_DATA_WIDTH         ),
-     .AXI_ID_WIDTH    ( AXI_ID_SLAVE_WIDTH     ),
-     .AXI_USER_WIDTH  ( AXI_USER_WIDTH         ),
-     .MEM_ADDR_WIDTH  ( INSTR_ADDR_WIDTH       )
-   )
-   instr_mem_axi_if
-   (
-     .clk         ( clk               ),
-     .rst_n       ( rst_n             ),
-     .test_en_i   ( testmode_i        ),
-
-     .mem_grant_i ( axi_instr_grant   ),
-     .mem_req_o   ( axi_instr_req     ),
-     .mem_addr_o  ( axi_instr_addr    ),
-     .mem_we_o    ( axi_instr_we      ),
-     .mem_be_o    ( axi_instr_be      ),
-     .mem_rdata_i ( axi_instr_rdata   ),
-     .mem_wdata_o ( axi_instr_wdata   ),
-
-     .slave       ( instr_slave       )
-   );
-
-  // localparam INSTR_RAM_MUX_OUT_WIDTH = (AXI_DATA_WIDTH>INSTR_RAM_WIDTH) ? AXI_DATA_WIDTH : INSTR_RAM_WIDTH ;
-
-  // Xram_mux
-  // #(
-  //   .ADDR_WIDTH ( INSTR_ADDR_WIDTH ),
-  //   .IN0_WIDTH  ( AXI_DATA_WIDTH   ),
-  //   .IN1_WIDTH  ( INSTR_RAM_WIDTH         ),
-  //   .OUT_WIDTH  ( INSTR_RAM_MUX_OUT_WIDTH )
-  // )
-  // instr_ram_mux_i
-  // (
-  //   .clk            ( clk               ),
-  //   .rst_n          ( rst_n             ),
-
-  //   .port0_req_i    ( axi_instr_req     ),
-  //   .port0_gnt_o    ( axi_instr_grant   ),
-  //   .port0_rvalid_o (                   ),
-  //   .port0_addr_i   ( {axi_instr_addr[INSTR_ADDR_WIDTH-AXI_B_WIDTH-1:0], {AXI_B_WIDTH{1'b0}}} ),
-  //   .port0_we_i     ( axi_instr_we      ),
-  //   .port0_be_i     ( axi_instr_be      ),
-  //   .port0_rdata_o  ( axi_instr_rdata   ),
-  //   .port0_wdata_i  ( axi_instr_wdata   ),
-
-  //   .port1_req_i    ( instr_ram_req     ),
-  //   .port1_gnt_o    ( instr_ram_gnt     ),
-  //   .port1_rvalid_o ( instr_ram_rvalid  ),
-  //   .port1_addr_i   ( instr_ram_addr[INSTR_ADDR_WIDTH-1:0] ),
-  //   .port1_we_i     ( 1'b0              ),
-  //   .port1_be_i     ( '1                ),
-  //   .port1_rdata_o  ( instr_ram_rdata   ),
-  //   .port1_wdata_i  ( '0                ),
-
-  //   .ram_en_o       ( instr_mem_en      ),
-  //   .ram_addr_o     ( instr_mem_addr    ),
-  //   .ram_rready     ( instr_mem_rready_mux ),
-  //   .ram_wready     ( instr_mem_wready_mux ),
-  //   .ram_we_o       ( instr_mem_we      ),
-  //   .ram_be_o       ( instr_mem_be      ),
-  //   .ram_rdata_i    ( instr_mem_rdata_mux  ),
-  //   .ram_wdata_o    ( instr_mem_wdata   ),
-  //   .port1_is_32b   ( 1'b0              )
-  // );
 
 
   //----------------------------------------------------------------------------//
