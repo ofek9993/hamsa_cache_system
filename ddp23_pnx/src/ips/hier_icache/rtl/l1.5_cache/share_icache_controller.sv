@@ -148,6 +148,7 @@ module share_icache_controller #(
 
   localparam  TAG_MSB_PRI   = (USE_REDUCED_TAG == "TRUE") ?   (TAG_LSB_PRI + REDUCE_TAG_WIDTH-1 + $clog2(N_BANKS))    :    (ICACHE_ADDR_WIDTH-1);
   localparam  TAG_MSB_SH    = (USE_REDUCED_TAG == "TRUE") ?   (TAG_LSB_SH  + REDUCE_TAG_WIDTH-1)                      :    (ICACHE_ADDR_WIDTH-1);
+  
 
 
   integer i;
@@ -399,7 +400,7 @@ module share_icache_controller #(
     init_aruser_o   = '0; // NOT USED
     init_arqos_o    = '0;
 
-    init_arsize_o  = 3'b011;  // AXI4 datawidth is 64bit --> 8 bytes
+    init_arsize_o  = $clog2(AXI_DATA/8);   // added this to be dynamic axi width arsize is number of axi bytes per beats so in our case (axi width bus is 32) it should be 2 because each beat axi has 2^size bytes meaning 2^2 bytes
     init_arburst_o = 2'b01;   // INCR
 
     init_rready_o = 1'b0;
@@ -506,7 +507,7 @@ module share_icache_controller #(
         // AXI AR REQUEST REFILL
         //init_aruser_o       = fetch_ID_i; // Just for Debug
         init_arlock_o  = 1'b0;
-        init_arsize_o  = 3'b011;  // AXI4 datawidth is 32bit --> 4 bytes
+        init_arsize_o  = $clog2(AXI_DATA/8);  // added this to be dynamic axi width arsize is number of axi bytes per beats so in our case (axi width bus is 32) it should be 2 because each beat axi has 2^size bytes meaning 2^2 bytes
         init_arburst_o = 2'b01;   // INCR
         init_arvalid_o = fetch_req_i & fifo_align_addr_gnt; //Store  the fetch ID in the FIFO ALIGN
 
