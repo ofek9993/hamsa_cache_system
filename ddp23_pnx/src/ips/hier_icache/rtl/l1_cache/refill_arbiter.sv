@@ -143,21 +143,25 @@ module refill_arbiter
   assign arbiter_addr_o       = {r_arbiter_addr[31:4], 4'h0};
   assign s_arbiter_gnt        = arbiter_gnt_i;
 
+
   always_ff @(posedge clk, negedge rst_n)
     begin
       if(~rst_n) begin
         r_arbiter_req  <= '0;
         r_arbiter_addr <= '0;
-      end else begin
+      end 
+      else begin
 
-        if (s_arbiter_gnt)
-          r_arbiter_req  <= 1'b0;
-        else if (s_arbiter_req)
-          r_arbiter_req  <= 1'b1;
-
-        if (s_arbiter_req) begin
-          r_arbiter_addr <= s_arbiter_addr[31:4];
+        // Clear exactly when the bus accepts the held request.. if you are currently holding a request and the arbiter grants it, you must clear that request
+        if (arbiter_gnt_i && r_arbiter_req) begin
+          r_arbiter_req <= 1'b0;
         end
+        // Only arm when idle; freeze the address on capture.... if you are idle (not holding a request) and a new one arrives, you should capture it
+        else if (!r_arbiter_req && s_arbiter_req) begin
+          r_arbiter_req  <= 1'b1;
+          r_arbiter_addr <= s_arbiter_addr[FETCH_ADDR_WIDTH-1:4];
+        end
+    // otherwise hold
       end
     end
 
