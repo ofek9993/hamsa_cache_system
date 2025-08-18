@@ -764,7 +764,7 @@ instr_ram_wrap #(
                    {AXI_B_WIDTH{1'b0}} } ),
   .wdata_i     ( axi_instr_wdata ),
   .rdata_o     ( instr_mem_rdata ),
-  .we_i        ( axi_instr_we ),
+  .we_i        ( 1'b0),// put comment insted of this > //axi_instr_we ),
   .be_i        ( axi_instr_be ),
   .bypass_en_i ( testmode_i ),
   .ram_ctrl    ( ram_ctrl[INSTR_MEM_CTRL_DW-1:0] )
