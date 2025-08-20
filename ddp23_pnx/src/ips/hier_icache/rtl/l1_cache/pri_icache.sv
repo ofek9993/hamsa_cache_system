@@ -34,7 +34,6 @@
 // Revision v0.1 - File Created                                               //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
-
 `define USE_REQ_BUFF
 
 `ifdef PULP_FPGA_EMUL
