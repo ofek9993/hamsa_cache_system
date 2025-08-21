@@ -74,9 +74,9 @@ wire pll_locked;
 `endif
 
  `ifdef HAMSA_DI
-     defparam fpgnix.vqm_msystem_wrap.msystem.core_region_i.instr_mem.sp_ram_wrap_i.init_file = "slm_files/app_instr32.mif";// change here just for the test to 32 inst because our axi of new cache system speaks 32bit transaction
+     defparam fpgnix.vqm_msystem_wrap.msystem.instr_mem.sp_ram_wrap_i.init_file = "slm_files/app_instr32.mif";// change here just for the test to 32 inst because our axi of new cache system speaks 32bit transaction
  `else    
-     defparam fpgnix.vqm_msystem_wrap.msystem.core_region_i.instr_mem.sp_ram_wrap_i.init_file = "slm_files/app_instr32.mif";
+     defparam fpgnix.vqm_msystem_wrap.msystem.instr_mem.sp_ram_wrap_i.init_file = "slm_files/app_instr32.mif";
  `endif
   
 

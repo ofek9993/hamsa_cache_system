@@ -61,9 +61,9 @@ APB_BUS     s_gpp_master_bus();
 `endif
 
  `ifdef HAMSA_DI
-     defparam vqm_msystem_wrap.msystem.core_region_i.instr_mem.sp_ram_wrap_i.init_file = "slm_files/app_instr32.mif";// change here just for the test to 32 inst because our axi of new cache system speaks 32bit transaction
+     defparam vqm_msystem_wrap.msystem.instr_mem.sp_ram_wrap_i.init_file = "slm_files/app_instr32.mif";// change here just for the test to 32 inst because our axi of new cache system speaks 32bit transaction
  `else    
-     defparam vqm_msystem_wrap.core_region_i.instr_mem.sp_ram_wrap_i.init_file = "slm_files/app_instr32.mif";
+     defparam vqm_msystem_wrap.instr_mem.sp_ram_wrap_i.init_file = "slm_files/app_instr32.mif";
  `endif
 
 
