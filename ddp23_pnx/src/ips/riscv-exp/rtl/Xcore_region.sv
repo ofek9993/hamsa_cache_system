@@ -11,23 +11,18 @@ module Xcore_region
     parameter AXI_ID_SLAVE_WIDTH   = 10,
     parameter AXI_USER_WIDTH       = 0,
     parameter DATA_RAM_SIZE        = 32768*2,   // in bytes
-    parameter INSTR_RAM_SIZE       = 32768*2, // in bytes (Default Sansa memory configuration)
     parameter RISCY_RV32F          = 0,
      
     `ifdef TSMC16
-    parameter INSTR_MEM_CTRL_DW    = 4,
     parameter DATA_MEM_CTRL_DW     = 4,
     `else
-    parameter INSTR_MEM_CTRL_DW    = 6,
     parameter DATA_MEM_CTRL_DW     = 5,
     `endif
 
     parameter IMEM_MASK            = 32'hfff_00000,
     parameter IMEM_BASE            = `MIN_XCORE_IMEM,
     parameter DMEM_MASK            = 32'hfff_00000,
-    parameter DMEM_BASE            = `MIN_XCORE_DMEM,
-
-    localparam CORE_MEM_CTR_DW     = DATA_MEM_CTRL_DW + INSTR_MEM_CTRL_DW
+    parameter DMEM_BASE            = `MIN_XCORE_DMEM
   )
   (
     // Clock and Reset
@@ -38,21 +33,20 @@ module Xcore_region
     input logic                        regfile_select_i,
     input logic                        instr_ram_sel_i, // 0 - SRAM, 1 - EDRAM
     input logic                        data_ram_sel_i, // 0 - SRAM, 1 - EDRAM
-
     input logic                        testmode_i,
     input logic                        fetch_enable_i,
     input logic [31:0]                 irq_i,
     output logic                       core_busy_o,
     input logic                        clock_gating_i,
     input logic [31:0]                 boot_addr_i,
-
+////////AXI interface///////////////////////////////////////
     AXI_BUS.Master                     core_master,
     AXI_BUS.Master                     dbg_master,
     AXI_BUS.Slave                      data_slave,
-    AXI_BUS.Slave                      instr_slave,
     APB_BUS.Slave                      iedram_apb,
     APB_BUS.Slave                      dedram_apb,
     APB_BUS.Slave                      apb_debug,
+////////////////////////////////////////////////////////////
 
     // JTAG signals
     input logic                        jtag_sel,
@@ -65,7 +59,7 @@ module Xcore_region
     output logic                       ndmreset,
 
     //RAM configuration
-    input logic [CORE_MEM_CTR_DW-1:0]  ram_ctrl,
+    input logic [DATA_MEM_CTRL_DW-1:0]  ram_ctrl,
 
     OPENOCD_JTAG.slave openocd_jtag,
 	
@@ -82,57 +76,28 @@ module Xcore_region
     output [3:0]                    xbox_dmem_wbe 
   );
 
- 
+ ///// local param config ////////////////////////////////////////////////////
   localparam MIN_XBOX_TCM_DMEM   = `MIN_XBOX_TCM_DMEM  ;
   localparam MAX_XBOX_TCM_DMEM   = `MAX_XBOX_TCM_DMEM  ;
   `ifdef HAMSA_DIX
-    localparam INSTR_RDATA_WIDTH = 32;//!!!!!!we changed it from 128 to 32 for our cache test!!!!
-    localparam HAMSA_INSTR_MUX   = 16;//!!!!!!changed it from 4 to 16 for our cache test!!!!!!
     localparam CORE_INSTR_RDATA_WIDTH=128;// added this to be more informative of core issue mode
   `else
-    localparam INSTR_RDATA_WIDTH = 32;
-    localparam HAMSA_INSTR_MUX   = 16;
     localparam CORE_INSTR_RDATA_WIDTH=32;// added this to be more informative of core issue mode
   `endif
-  // Mem Config
+  // DMem Config
  
   localparam DATA_RAM_WIDTH  = 32;
   localparam DATA_RAM_MUX    = 16;
-
-  localparam INSTR_RAM_WIDTH = INSTR_RDATA_WIDTH;
-  localparam INSTR_RAM_MUX   = HAMSA_INSTR_MUX;
-
-  localparam INSTR_ADDR_WIDTH = $clog2(INSTR_RAM_SIZE)+1; // extra bit for edram/sram sel. boot rom is obsolete
   localparam DATA_ADDR_WIDTH  = $clog2(DATA_RAM_SIZE)+ 1; // extra_bit for edram/sram sel
-
   localparam AXI_B_WIDTH      = $clog2(AXI_DATA_WIDTH/8); // AXI "Byte" width
   localparam DATA_CORE_WIDTH  = 32;
 
-  // EDRAM config 
-  localparam INSTR_RAM_ADDR_W=$clog2(INSTR_RAM_SIZE);  
-  localparam DATA_RAM_ADDR_W =$clog2(DATA_RAM_SIZE);  
-  //edram params
-  localparam EDRAM_WIDTH=64;
-  localparam EDRAM_DEPTH=4096;
-  localparam EDRAM_DEPTH_W=$clog2(EDRAM_DEPTH);
-  //instr array params
-  localparam  INSTR_ARR_INST_WIDTH = 2;
-  localparam  INSTR_ARR_INST_DEPTH = INSTR_RAM_SIZE/(INSTR_ARR_INST_WIDTH*EDRAM_DEPTH*EDRAM_WIDTH/8);
-  localparam  INSTR_ARR_WIDTH=EDRAM_WIDTH*INSTR_ARR_INST_WIDTH;
-  localparam  INSTR_ARR_DEPTH=EDRAM_DEPTH*INSTR_ARR_INST_DEPTH;
-  localparam  INSTR_ARR_DEPTH_W=$clog2(INSTR_ARR_DEPTH);
-  //data array params
-  localparam  DATA_ARR_INST_WIDTH = 2;
-  localparam  DATA_ARR_INST_DEPTH = DATA_RAM_SIZE/(DATA_ARR_INST_WIDTH*EDRAM_DEPTH*EDRAM_WIDTH/8);
-  localparam  DATA_ARR_WIDTH=EDRAM_WIDTH*DATA_ARR_INST_WIDTH;
-  localparam  DATA_ARR_DEPTH=EDRAM_DEPTH*DATA_ARR_INST_DEPTH;
-  localparam  DATA_ARR_DEPTH_W=$clog2(DATA_ARR_DEPTH);
-  //bist
-  parameter HAS_BIST = 0;
-  //axi 
+  //AXI id define
   localparam int NUM_PORTS = 2; //we have data port or inst port
   localparam int SLV_ID_W  = AXI_ID_MASTER_WIDTH -$clog2(NUM_PORTS); // when use in internal modules and not in mux we dont need extra bit for port select 
   localparam int MST_ID_W  = AXI_ID_MASTER_WIDTH;                     // for axi mux module and up so we know how to select and route back the data (inst for cpu or data for load store unit)
+  ////////////////////////////end of config ///////////////////////////////////////////////////////////////////////////////////////
+
   // signals from/to core
   logic         debug_req;
   
@@ -182,24 +147,6 @@ module Xcore_region
   logic [AXI_DATA_WIDTH/8-1:0] axi_mem_be;
   logic [AXI_DATA_WIDTH-1:0]   axi_mem_rdata;
   logic [AXI_DATA_WIDTH-1:0]   axi_mem_wdata;
-
-  // signals to/from AXI instr
-  logic                        axi_instr_grant;
-  logic                        axi_instr_req;
-  logic [INSTR_ADDR_WIDTH-1:0] axi_instr_addr;
-  logic                        axi_instr_we;
-  logic [AXI_DATA_WIDTH/8-1:0] axi_instr_be;
-  logic [AXI_DATA_WIDTH-1:0]   axi_instr_rdata;
-  logic [AXI_DATA_WIDTH-1:0]   axi_instr_wdata;
-
-  // signals to/from instr mem
-  logic                           instr_mem_en;
-  logic [INSTR_ADDR_WIDTH-1:0]    instr_mem_addr;
-  logic                           instr_mem_we;
-  logic [INSTR_RAM_WIDTH/8-1:0] instr_mem_be;
-  logic [INSTR_RAM_WIDTH-1:0]     instr_mem_rdata;
-  logic [INSTR_RAM_WIDTH-1:0]     instr_mem_wdata;
-
   // signals to/from data mem
   logic                           data_mem_en;
   logic [DATA_ADDR_WIDTH-1:0]     data_mem_addr;
@@ -222,7 +169,6 @@ module Xcore_region
 
   logic is_xbox_tcm_dmem_addr;
 
-  logic [128-1:0] sh_fetch_data;
 
   // ICACHE //
   localparam SH_NB_BANKS  = 1;
@@ -232,21 +178,19 @@ module Xcore_region
   logic [31:0] icache_addr_i;
   logic icache_gnt_o;
   logic icache_rvalid_o;
-  logic [128-1:0] icache_rdata_o; // The cache outputs a 128-bit wide bus for dual issue
+  logic [CORE_INSTR_RDATA_WIDTH-1:0] icache_rdata_o; // The cache outputs for core 
 
   // icache control busses//
   SP_ICACHE_CTRL_UNIT_BUS icache_ctrl_main[SH_NB_BANKS] ();
   PRI_ICACHE_CTRL_UNIT_BUS icache_ctrl_pri[NB_CORES] ();
 
-  // Force icache to an enabled state - no bypass/flush
+  // Force icache to an enabled state - no bypass/flush for now .... it is for test only we need to later access them by Load inst and memory map them 
   generate
     for (genvar i = 0; i < SH_NB_BANKS; i++) begin : gen_icache_ctrl_main_logic
       always_comb begin
         icache_ctrl_main[i].ctrl_req_enable = 1'b1;
         icache_ctrl_main[i].ctrl_req_disable = 1'b0;
         icache_ctrl_main[i].ctrl_flush_req = 1'b0;
-        // icache_ctrl_main[i].ctrl_clear_regs = 1'b0;
-        // icache_ctrl_main[i].ctrl_enable_regs = 1'b0;
         icache_ctrl_main[i].sel_flush_req = 1'b0;
         icache_ctrl_main[i].sel_flush_addr = {'0, '0};
       end
@@ -264,11 +208,11 @@ module Xcore_region
   endgenerate
 
 
-  // Main core axi bus
+  ////////////////////////// AXI INIT//////////////////////////////////
   AXI_BUS #(
     .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
     .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-    .AXI_ID_WIDTH     ( MST_ID_W ),
+    .AXI_ID_WIDTH     ( MST_ID_W            ),
     .AXI_USER_WIDTH   ( AXI_USER_WIDTH      )
   ) core_master_int();
 
@@ -276,7 +220,7 @@ module Xcore_region
   AXI_BUS_INTF #(
     .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
     .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-    .AXI_ID_WIDTH     ( SLV_ID_W),
+    .AXI_ID_WIDTH     ( SLV_ID_W            ),
     .AXI_USER_WIDTH   ( AXI_USER_WIDTH      )
   ) axi_master_int [1:0]();
   
@@ -284,9 +228,10 @@ module Xcore_region
   AXI_BUS_INTF #(
     .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
     .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-    .AXI_ID_WIDTH     ( MST_ID_W ),
+    .AXI_ID_WIDTH     ( MST_ID_W            ),
     .AXI_USER_WIDTH   ( AXI_USER_WIDTH      )
   ) arbiter_output_int();
+  ////////////////////////////////////////////////////////////////////////
 
   //----------------------------------------------------------------------------//
   // Core Instantiation
@@ -385,18 +330,18 @@ module Xcore_region
 
   icache_hier_top
   #(
-    .FETCH_ADDR_WIDTH      (32),
-    .PRI_FETCH_DATA_WIDTH  (128),          // This is the width of a single instruction
-    .SH_FETCH_DATA_WIDTH   (128),         // This is the width of the L1.5/L2 cache line
-    .NB_CORES              (NB_CORES),    // Hamsa DI has a single core
-    .SH_NB_BANKS           (SH_NB_BANKS), // For a single cache bank
-    .SH_NB_WAYS            (4),           // 4-way set associative L2
-    .SH_CACHE_SIZE         (4*1024),      // 4KB L2 cache
-    .PRI_NB_WAYS           (2),           // 2-way set associative L1
-    .PRI_CACHE_SIZE        (512),         // 512B L1 cache
-    .AXI_ID                (SLV_ID_W),          // Use the same AXI parameters as your core_master
+    .FETCH_ADDR_WIDTH      (32),                      // core askes for 32 bit address even in dual issue 
+    .PRI_FETCH_DATA_WIDTH  (CORE_INSTR_RDATA_WIDTH),  // This is the width of a single instruction dual issue ->128
+    .SH_FETCH_DATA_WIDTH   (CORE_INSTR_RDATA_WIDTH),  // This is the width of the L1.5/L2 cache line/SRAM -> 128 in dual issue because we want to fill 4 blocks of 32 bit (HAMSA AXI DATA_W system)
+    .NB_CORES              (NB_CORES),                // Hamsa DI has a single core
+    .SH_NB_BANKS           (SH_NB_BANKS),             // For a single cache bank
+    .SH_NB_WAYS            (4),                       // 4-way set associative L2
+    .SH_CACHE_SIZE         (4*1024),                  // 4KB L2 cache
+    .PRI_NB_WAYS           (2),                       // 2-way set associative L1
+    .PRI_CACHE_SIZE        (512),                     // 512B L1 cache
+    .AXI_ID                (SLV_ID_W),          
     .AXI_ADDR              (AXI_ADDR_WIDTH),
-    .AXI_DATA              (AXI_DATA_WIDTH),          // The AXI bus is 64-bit wide
+    .AXI_DATA              (AXI_DATA_WIDTH),          // The AXI bus is 32-bit wide in system 
     .AXI_USER              (AXI_USER_WIDTH)
   )
   i_icache_top 
@@ -476,11 +421,11 @@ module Xcore_region
   // PULP hier_icache - NEW core2axi for data path
   //----------------------------------------------------------------------------//
 
-  core2axi_wrap // ICACHE MODIFICATION - Type of BUS inside core2axi_warp changed AXI_BUS --> AXI_BUS_INTF
+  core2axi_wrap // ICACHE MODIFICATION - Type of BUS inside core2axi_warp changed AXI_BUS --> AXI_BUS_INTF ..... AXI BUS INTF is like AXI BUS just a new PULP verision for AXI it is just without monitor port and we needed to change it to be compatible
   #(
     .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
     .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-    .AXI_ID_WIDTH     ( SLV_ID_W),
+    .AXI_ID_WIDTH     ( SLV_ID_W            ),
     .AXI_USER_WIDTH   ( AXI_USER_WIDTH      ),
     .REGISTERED_GRANT ( "FALSE"             )
   )
@@ -565,10 +510,9 @@ module Xcore_region
     .axi_slave  ( core_master_int ),
     .axi_master ( core_master     )
   );
-
-  //----------------------------------------------------------------------------//
-  // DATA-DEMUX
-  //----------------------------------------------------------------------------//
+ //----------------------------------------------------------------------------//
+ // DATA-DEMUX + LOAD STORE UNIT logic. this part chose path of core load store unit <-> data mem, or core lsu <-> axi <-> axi master int [1] (data) <-> core master <-> Peripherals and bring data to core
+//----------------------------------------------------------------------------//
   
   assign is_xbox_tcm_dmem_addr = (core_lsu_addr >= MIN_XBOX_TCM_DMEM) && (core_lsu_addr <= MAX_XBOX_TCM_DMEM) ;
   
@@ -611,59 +555,8 @@ module Xcore_region
   typedef enum logic {SRAM=1'b0, XBOX_TCM_DMEM=1'b1} xcore_ram_type_t;
 
   //----------------------------------------------------------------------------//
-  // AXI TO <-> SRAM TRANSACTIONS 
-  //----------------------------------------------------------------------------//
-
-// AXI <-> simple single-port mem bridge (memory always “ready”)
-axi_mem_if_SP_async_wrap #(
-  .AXI_ADDR_WIDTH  ( AXI_ADDR_WIDTH     ),
-  .AXI_DATA_WIDTH  ( AXI_DATA_WIDTH     ),
-  .AXI_ID_WIDTH    ( AXI_ID_SLAVE_WIDTH ),
-  .AXI_USER_WIDTH  ( AXI_USER_WIDTH     ),
-  .MEM_ADDR_WIDTH  ( INSTR_ADDR_WIDTH   )
-) instr_mem_axi_if (
-  .clk         ( clk               ),
-  .rst_n       ( rst_n             ),
-  .test_en_i   ( testmode_i        ),
-
-  .mem_grant_i ( 1'b1              ), // minimal: SRAM is always ready
-  .mem_req_o   ( axi_instr_req     ),
-  .mem_addr_o  ( axi_instr_addr    ),
-  .mem_we_o    ( axi_instr_we      ),
-  .mem_be_o    ( axi_instr_be      ),
-  .mem_rdata_i ( instr_mem_rdata   ),
-  .mem_wdata_o ( axi_instr_wdata   ),
-
-  .slave       ( instr_slave       )
-);
-
-// Directly drive instr RAM from the AXI bridge
-instr_ram_wrap #(
-  .RAM_SIZE    ( INSTR_RAM_SIZE    ),
-  .DATA_WIDTH  ( INSTR_RAM_WIDTH   ),
-  .MEM_CTRL_DW ( INSTR_MEM_CTRL_DW ),
-  .MEM_MUX     ( INSTR_RAM_MUX     )
-) instr_mem (
-  .clk         ( clk ),
-  .rst_n       ( rst_n ),
-  .en_i        ( axi_instr_req ),
-  // same address shaping as before: beat->byte zeros + force MSB=0
-  .addr_i      ( { 1'b0,
-                   axi_instr_addr[INSTR_ADDR_WIDTH-AXI_B_WIDTH-2:0],
-                   {AXI_B_WIDTH{1'b0}} } ),
-  .wdata_i     ( axi_instr_wdata ),
-  .rdata_o     ( instr_mem_rdata ),
-  .we_i        ( 1'b0),// put comment insted of this > //axi_instr_we ),
-  .be_i        ( 16'hffff),//axi_instr_be ),
-  .bypass_en_i ( testmode_i ),
-  .ram_ctrl    ( ram_ctrl[INSTR_MEM_CTRL_DW-1:0] )
-);
-
-
-  //----------------------------------------------------------------------------//
   // Data RAM
   //----------------------------------------------------------------------------//
-
 
   // NO DATA CACHE
   // input for ram_mux
@@ -752,12 +645,7 @@ assign dedram_apb.pslverr =0;
     .we_i         ( data_mem_we    ),
     .be_i         ( data_mem_be    ),
     .bypass_en_i  ( testmode_i     ),
-
-    `ifdef TSMC16
-    .ram_ctrl        ( ram_ctrl[CORE_MEM_CTR_DW-1:INSTR_MEM_CTRL_DW] )
-    `else
-    .ram_ctrl        ( ram_ctrl[CORE_MEM_CTR_DW-1:INSTR_MEM_CTRL_DW] )
-    `endif
+    .ram_ctrl     ( ram_ctrl)
   );
 
   axi_mem_if_SP_async_wrap
