@@ -38,10 +38,8 @@
                              .AXI_ID_MASTER_WIDTH ( `AXI_ID_MASTER_WIDTH   ), \
                              .AXI_ID_SLAVE_WIDTH  ( `AXI_ID_SLAVE_WIDTH    ), \
                              .AXI_USER_WIDTH      ( `AXI_USER_WIDTH        ), \
-                             .DATA_RAM_SIZE       ( DATA_RAM_SIZE          ), \
-                             .INSTR_RAM_SIZE      ( INSTR_RAM_SIZE         ), \
-                             .DATA_MEM_CTRL_DW    ( `DATA_MEM_CTRL_VEC_DW  ), \
-                             .INSTR_MEM_CTRL_DW   ( `INSTR_MEM_CTRL_VEC_DW )  \
+                             .DATA_RAM_SIZE       (  DATA_RAM_SIZE         ), \
+                             .DATA_MEM_CTRL_DW    ( `DATA_MEM_CTRL_VEC_DW  )  \
                              )
 
 
@@ -256,7 +254,6 @@ module msystem #(parameter MEM_CTRL_VEC_DW = 32)
                                    .core_master        ( masters[0]                          ),
                                    .dbg_master         ( masters[1]                          ),
                                    .data_slave         ( slaves[1]                           ),
-                                   .instr_slave        ( slaves[0]                           ),
                                    .iedram_apb       ( s_iedram_apb_bus                      ), // Applicable only for Xcore_region
                                    .dedram_apb       ( s_dedram_apb_bus                      ), // Applicable only for Xcore_region
                                    .apb_debug          ( apb_debug                           ),
@@ -268,7 +265,7 @@ module msystem #(parameter MEM_CTRL_VEC_DW = 32)
                                    .tdo_o              ( pad_tdo                             ),
                                    .jtag_sel           ( jtag_sel                            ),
                                    .openocd_jtag       ( openocd_jtag                        ),
-                                   .ram_ctrl           ( ram_ctrl[`CORE_MEM_CTRL_VEC_DW-1:0] ),
+                                   .ram_ctrl           ( ram_ctrl[`CORE_MEM_CTRL_VEC_DW-1:`INSTR_MEM_CTRL_VEC_DW] ),
 								   
 	                               // XBOX mem TCM dmem interface	
 	                               // xbox mem -> core_region
@@ -464,6 +461,67 @@ module msystem #(parameter MEM_CTRL_VEC_DW = 32)
                        .end_addr_i   ( { 32'hFFFF_FFFF, 32'h1ABF_FFFF, 32'h1A4F_FFFF, 32'h001F_FFFF, 32'h000F_FFFF } )
                        );
 
+  //----------------------------------------------------------------------------//
+  // AXI TO <-> Instraction SRAM TRANSACTIONS THIS IS WHERE THE INST MEMORY IS 
+  //----------------------------------------------------------------------------//
+  ///////////////////signals/////////////////////////////////////////////////////
+  localparam INSTR_RAM_WIDTH = 32;
+  localparam INSTR_RAM_MUX   = 16;
+  localparam AXI_B_WIDTH     = $clog2(`AXI_DATA_WIDTH/8);//for inst address
+  // signals to/from AXI instr
+  logic                               axi_instr_req;
+  logic [INSTR_ADDR_WIDTH-1:0]        axi_instr_addr;
+  logic                               axi_instr_we;
+  logic [`AXI_DATA_WIDTH/8-1:0]       axi_instr_be;
+  logic [`AXI_DATA_WIDTH-1:0]         axi_instr_rdata;
+  logic [`AXI_DATA_WIDTH-1:0]         axi_instr_wdata;
+  // signals to/from instr mem
+  logic [INSTR_RAM_WIDTH-1:0]         instr_mem_rdata;
+  logic [`INSTR_MEM_CTRL_VEC_DW -1:0] inst_ram_ctrl;
+  //////////////////////////////////////////////////////////////////////////////
+
+// AXI <-> simple single-port mem bridge (memory always “ready”)
+axi_mem_if_SP_async_wrap #(
+  .AXI_ADDR_WIDTH  ( `AXI_ADDR_WIDTH     ),
+  .AXI_DATA_WIDTH  ( `AXI_DATA_WIDTH     ),
+  .AXI_ID_WIDTH    ( `AXI_ID_SLAVE_WIDTH ),
+  .AXI_USER_WIDTH  ( `AXI_USER_WIDTH     ),
+  .MEM_ADDR_WIDTH  ( INSTR_ADDR_WIDTH   )
+) instr_mem_axi_if (
+  .clk         ( clk_sys               ),
+  .rst_n       ( rstn_sys              ),
+  .test_en_i   ( pad_testmode_i    ),
+
+  .mem_grant_i ( 1'b1              ), //  SRAM is always ready
+  .mem_req_o   ( axi_instr_req     ),
+  .mem_addr_o  ( axi_instr_addr    ),
+  .mem_we_o    ( axi_instr_we      ),
+  .mem_be_o    ( axi_instr_be      ),
+  .mem_rdata_i ( instr_mem_rdata   ),
+  .mem_wdata_o ( axi_instr_wdata   ),
+
+  .slave       ( slaves[0]         )
+);
+
+// Directly drive instr RAM from the AXI bridge
+instr_ram_wrap #(
+  .RAM_SIZE    ( INSTR_RAM_SIZE        ),
+  .DATA_WIDTH  ( INSTR_RAM_WIDTH       ),
+  .MEM_CTRL_DW (`INSTR_MEM_CTRL_VEC_DW ),
+  .MEM_MUX     ( INSTR_RAM_MUX         )
+) instr_mem (
+  .clk         ( clk_sys  ),
+  .rst_n       ( rstn_sys ),
+  .en_i        ( axi_instr_req ),
+  .addr_i      ( { 1'b0,axi_instr_addr[INSTR_ADDR_WIDTH-AXI_B_WIDTH-1:0],{AXI_B_WIDTH{1'b0}} } ),// { bank/select ROM/INST RAM , word_index , byte_offset (for alignment) } for example if we want addr 01 then it will be zeroed out because same 32bit block is in addr 00.. 
+  .wdata_i     ( axi_instr_wdata ),
+  .rdata_o     ( instr_mem_rdata ),
+  .we_i        ( axi_instr_we    ),
+  .be_i        ( axi_instr_be    ),
+  .bypass_en_i ( pad_testmode_i  ),
+  .ram_ctrl    ( inst_ram_ctrl   )
+);
+/////////////////////////////////////////////////END OF INST MEM +AXI BLOCK/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    spi_top
     #(      // Parameters
