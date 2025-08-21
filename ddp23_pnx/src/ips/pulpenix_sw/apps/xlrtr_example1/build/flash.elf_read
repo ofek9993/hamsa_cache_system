@@ -1,0 +1,14 @@
+
+/data/project/tsmc65/users/sharabo/ws/ddp23/ddp23_pnx/src/ips/pulpenix_sw/apps/libs/build/flash.o:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <.text>:
+	...
+  80:	08000093          	li	ra,128
+  84:	00008067          	ret
+	...
+ 180:	1ac000b7          	lui	ra,0x1ac00
+ 184:	08008093          	addi	ra,ra,128 # 0x1ac00080
+ 188:	00008067          	ret

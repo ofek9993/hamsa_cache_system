@@ -69,9 +69,9 @@ simvision mmap new -name "Opcode" -contents {
 	{0000010c -label "auipc sp,0x130"}
 	{00000110 -label "addi sp,sp,-268 # 130000 <_stack_start>"}
 	{00000114 -label "auipc s10,0x100"}
-	{00000118 -label "addi s10,s10,412 # 1002b0 <_edata>"}
+	{00000118 -label "addi s10,s10,456 # 1002dc <_edata>"}
 	{0000011c -label "auipc s11,0x100"}
-	{00000120 -label "addi s11,s11,404 # 1002b0 <_edata>"}
+	{00000120 -label "addi s11,s11,448 # 1002dc <_edata>"}
 	{00000124 -label "ble s11,s10,134 <zero_loop_end>"}
 	{00000128 -label "sw zero,0(s10)"}
 	{0000012c -label "addi s10,s10,4"}
@@ -79,74 +79,74 @@ simvision mmap new -name "Opcode" -contents {
 	{00000134 -label "jal ra,34c <__libc_init_array>"}
 	{00000138 -label "li a0,0"}
 	{0000013c -label "li a1,3"}
-	{00000140 -label "jal ra,6d4 <uart_set_cfg>"}
-	{00000144 -label "jal ra,188c <init_pll_rcg>"}
+	{00000140 -label "jal ra,7a4 <uart_set_cfg>"}
+	{00000144 -label "jal ra,195c <init_pll_rcg>"}
 	{00000148 -label "li a0,0"}
 	{0000014c -label "li a1,0"}
-	{00000150 -label "jal ra,55c <__DTOR_END__>"}
-	{00000154 -label "jal ra,1880 <sim_finish>"}
-	{00000158 -label "jal ra,760 <uart_wait_tx_done>"}
-	{0000015c -label "jal ra,7d8 <exit>"}
+	{00000150 -label "jal ra,5d0 <main>"}
+	{00000154 -label "jal ra,1950 <sim_finish>"}
+	{00000158 -label "jal ra,830 <uart_wait_tx_done>"}
+	{0000015c -label "jal ra,8a8 <exit>"}
 	{00000160 -label "addi sp,sp,-96"}
 	{00000164 -label "sw ra,92(sp)"}
 	{00000168 -label "jal ra,250 <store_regs>"}
 	{0000016c -label "auipc ra,0x0"}
 	{00000170 -label "addi ra,ra,348 # 2c8 <end_except>"}
-	{00000174 -label "j 6b0 <ISR_I2C>"}
+	{00000174 -label "j 780 <ISR_I2C>"}
 	{00000178 -label "addi sp,sp,-96"}
 	{0000017c -label "sw ra,92(sp)"}
 	{00000180 -label "jal ra,250 <store_regs>"}
 	{00000184 -label "auipc ra,0x0"}
 	{00000188 -label "addi ra,ra,324 # 2c8 <end_except>"}
-	{0000018c -label "j 6b4 <ISR_UART>"}
+	{0000018c -label "j 784 <ISR_UART>"}
 	{00000190 -label "addi sp,sp,-96"}
 	{00000194 -label "sw ra,92(sp)"}
 	{00000198 -label "jal ra,250 <store_regs>"}
 	{0000019c -label "auipc ra,0x0"}
 	{000001a0 -label "addi ra,ra,300 # 2c8 <end_except>"}
-	{000001a4 -label "j 6b8 <ISR_GPIO>"}
+	{000001a4 -label "j 788 <ISR_GPIO>"}
 	{000001a8 -label "addi sp,sp,-96"}
 	{000001ac -label "sw ra,92(sp)"}
 	{000001b0 -label "jal ra,250 <store_regs>"}
 	{000001b4 -label "auipc ra,0x0"}
 	{000001b8 -label "addi ra,ra,276 # 2c8 <end_except>"}
-	{000001bc -label "j 6bc <ISR_SPIM0>"}
+	{000001bc -label "j 78c <ISR_SPIM0>"}
 	{000001c0 -label "addi sp,sp,-96"}
 	{000001c4 -label "sw ra,92(sp)"}
 	{000001c8 -label "jal ra,250 <store_regs>"}
 	{000001cc -label "auipc ra,0x0"}
 	{000001d0 -label "addi ra,ra,252 # 2c8 <end_except>"}
-	{000001d4 -label "j 6c0 <ISR_SPIM1>"}
+	{000001d4 -label "j 790 <ISR_SPIM1>"}
 	{000001d8 -label "addi sp,sp,-96"}
 	{000001dc -label "sw ra,92(sp)"}
 	{000001e0 -label "jal ra,250 <store_regs>"}
 	{000001e4 -label "auipc ra,0x0"}
 	{000001e8 -label "addi ra,ra,228 # 2c8 <end_except>"}
-	{000001ec -label "j 6c8 <ISR_TA_CMP>"}
+	{000001ec -label "j 798 <ISR_TA_CMP>"}
 	{000001f0 -label "addi sp,sp,-96"}
 	{000001f4 -label "sw ra,92(sp)"}
 	{000001f8 -label "jal ra,250 <store_regs>"}
 	{000001fc -label "auipc ra,0x0"}
 	{00000200 -label "addi ra,ra,204 # 2c8 <end_except>"}
-	{00000204 -label "j 6c4 <ISR_TA_OVF>"}
+	{00000204 -label "j 794 <ISR_TA_OVF>"}
 	{00000208 -label "addi sp,sp,-96"}
 	{0000020c -label "sw ra,92(sp)"}
 	{00000210 -label "jal ra,250 <store_regs>"}
 	{00000214 -label "auipc ra,0x0"}
 	{00000218 -label "addi ra,ra,180 # 2c8 <end_except>"}
-	{0000021c -label "j 6d0 <ISR_TB_CMP>"}
+	{0000021c -label "j 7a0 <ISR_TB_CMP>"}
 	{00000220 -label "addi sp,sp,-96"}
 	{00000224 -label "sw ra,92(sp)"}
 	{00000228 -label "jal ra,250 <store_regs>"}
 	{0000022c -label "auipc ra,0x0"}
 	{00000230 -label "addi ra,ra,156 # 2c8 <end_except>"}
-	{00000234 -label "j 6cc <ISR_TB_OVF>"}
+	{00000234 -label "j 79c <ISR_TB_OVF>"}
 	{00000238 -label "addi sp,sp,-96"}
 	{0000023c -label "sw ra,92(sp)"}
 	{00000240 -label "jal ra,250 <store_regs>"}
 	{00000244 -label "auipc ra,0x0"}
 	{00000248 -label "addi ra,ra,132 # 2c8 <end_except>"}
-	{0000024c -label "j 584 <illegal_insn_handler_c>"}
+	{0000024c -label "j 654 <illegal_insn_handler_c>"}
 	{00000250 -label "sw gp,0(sp)"}
 	{00000254 -label "sw tp,4(sp)"}
 	{00000258 -label "sw t0,8(sp)"}

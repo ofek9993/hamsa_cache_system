@@ -229,8 +229,8 @@ int main() {
     
  bm_printf("\nHELLO DDP24 ASCII ART\n"); 
 
-  int is_xltr_enabled = 1 ; // 1: enabled ; 0: disabled 
-  char flip_horiz = 0 ; // Optionally flip image horizontally 
+  int is_xltr_enabled = 0 ; // 1: enabled ; 0: disabled 
+  char flip_horiz = 1 ; // Optionally flip image horizontally 
 
  // Locate the fonts library of multiple lines each of 32 bytes,  cast to 2D-array
   char (* fonts_lib_arr)[BYTES_PER_LINE] = (char **) FONTS_LIB_BASE_ADDR; 
