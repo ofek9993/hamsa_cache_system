@@ -129,23 +129,13 @@ module Xcore_region
   localparam  DATA_ARR_DEPTH_W=$clog2(DATA_ARR_DEPTH);
   //bist
   parameter HAS_BIST = 0;
-
+  //axi 
+  localparam int NUM_PORTS = 2; //we have data port or inst port
+  localparam int SLV_ID_W  = AXI_ID_MASTER_WIDTH -$clog2(NUM_PORTS); // when use in internal modules and not in mux we dont need extra bit for port select 
+  localparam int MST_ID_W  = AXI_ID_MASTER_WIDTH;                     // for axi mux module and up so we know how to select and route back the data (inst for cpu or data for load store unit)
   // signals from/to core
   logic         debug_req;
-
-  // REPLACED WITH ICACHE SIGNALS //
-  // logic         core_instr_req; //core_instr_* is the core's instruction bus
-  // logic         core_instr_gnt;
-  // logic         core_instr_rvalid;
-  // logic [31:0]  core_instr_addr;
-  // logic [INSTR_RDATA_WIDTH-1:0]  core_instr_rdata;
-
-  // logic         core_imem_req; //core_imem_* is core_instr_* towards internal ICache
-  // logic         core_imem_gnt;
-  // logic         core_imem_rvalid;
-  // logic [31:0]  core_imem_addr;
-  // logic [INSTR_RDATA_WIDTH-1:0]  core_imem_rdata;
-
+  
   logic         core_lsu_req; //core_lsu_* is the core's data bus
   logic         core_lsu_gnt;
   logic         core_lsu_rvalid;
@@ -165,29 +155,7 @@ module Xcore_region
   logic [DATA_CORE_WIDTH-1:0]     core_data_rdata;
   logic [DATA_CORE_WIDTH-1:0]     core_data_wdata;
 
-  // NEVER USED BEFORE //
-  // signals for cache and bypass
-  // logic                           d_cache_ram_req;
-  // logic [31:0]                    d_cache_ram_addr;
-  // logic                           d_cache_ram_we;
-  // logic [(DATA_RAM_WIDTH/8)-1:0]  d_cache_ram_be;
-  // logic [DATA_RAM_WIDTH-1:0]      d_cache_ram_wdata;
-  // logic [31:0]                    d_cache_core_rdata;
-  // logic                           d_cache_core_rvalid;
-  // logic                           d_cache_core_gnt;
 
-  // logic                           i_cache_ram_req;
-  // logic [31:0]                    i_cache_ram_addr;
-  // logic                           i_cache_core_rvalid;
-  // logic                           i_cache_core_gnt;
-  // logic [INSTR_RAM_WIDTH-1:0]     i_cache_core_rdata;
-
-  // REMOVED DUE TO ICACHE REPLACEMENT //
-  // logic                           instr_ram_req;
-  // logic                           instr_ram_gnt;
-  // logic                           instr_ram_rvalid;
-  // logic [31:0]                    instr_ram_addr;
-  // logic [INSTR_RAM_WIDTH-1:0]     instr_ram_rdata;
 
   logic                           data_ram_req;
   logic                           data_ram_gnt;
@@ -242,31 +210,6 @@ module Xcore_region
 
   enum logic [0:0] { AXI, RAM } lsu_resp_CS, lsu_resp_NS, instr_resp;
 
-  // REMOVED DUE TO ICACHE REPLACEMENT //
-  // // signals to/from core2axi
-  // logic         core_axi_req; //core_axi_* is post-arbitration of core_axi_i_narrow_* and core_axi_d_*
-  // logic         core_axi_gnt;
-  // logic         core_axi_rvalid;
-  // logic [31:0]  core_axi_addr;
-  // logic         core_axi_we;
-  // logic [3:0]   core_axi_be;
-  // logic [31:0]  core_axi_rdata;
-  // logic [31:0]  core_axi_wdata;
-
-  // logic         core_axi_i_wide_req; //core_axi_i_wide_* is core_instr_* towards inst_narrower
-  // logic         core_axi_i_wide_gnt;
-  // logic         core_axi_i_wide_rvalid;
-  // logic [31:0]  core_axi_i_wide_addr;
-  // logic [INSTR_RDATA_WIDTH-1:0]  core_axi_i_wide_rdata;
-
-  // logic         core_axi_i_narrow_req; //core_axi_i_narrow_* is inst_narrower towards AXI master
-  // logic         core_axi_i_narrow_gnt;
-  // logic         core_axi_i_narrow_rvalid;
-  // logic [31:0]  core_axi_i_narrow_addr;
-  // logic         core_axi_i_narrow_we;
-  // logic [3:0]   core_axi_i_narrow_be;
-  // logic [31:0]  core_axi_i_narrow_rdata;
-  // logic [31:0]  core_axi_i_narrow_wdata;
 
   logic         core_axi_d_req; //core_axi_d_* is core_lsu_* towards to AXI master
   logic         core_axi_d_gnt;
@@ -277,14 +220,6 @@ module Xcore_region
   logic [31:0]  core_axi_d_rdata;
   logic [31:0]  core_axi_d_wdata;
 
-  // REMOVED DUE TO ICACHE REPLACEMENT //
-  // logic         core_axi_sel_data;
-  // logic         core_axi_sel_data_keep;
-
-  // logic [32+32+4+1-1:0] core_axi_d_concat;
-  // logic [32+32+4+1-1:0] core_axi_i_narrow_concat;
-  // logic [32+32+4+1-1:0] core_axi_concat;
-  
   logic is_xbox_tcm_dmem_addr;
 
   logic [128-1:0] sh_fetch_data;
@@ -329,50 +264,11 @@ module Xcore_region
   endgenerate
 
 
-  // logic         core_axi_i_req;
-  // logic         core_axi_i_gnt;
-  // logic         core_axi_i_rvalid;
-  // logic [31:0]  core_axi_i_addr;
-  // logic         core_axi_i_we;
-  // logic [3:0]   core_axi_i_be;
-  // logic [31:0]  core_axi_i_rdata;
-  // logic [31:0]  core_axi_i_wdata;
-
-
-  // assign core_axi_d_concat = {core_axi_d_we, core_axi_d_be, core_axi_d_addr, core_axi_d_wdata};
-  // assign core_axi_i_narrow_concat = {core_axi_i_narrow_we, core_axi_i_narrow_be, core_axi_i_narrow_addr, core_axi_i_narrow_wdata};
-  // assign core_axi_d_rdata         = core_axi_rdata;
-  // assign core_axi_iS_narrow_rdata  = core_axi_rdata;
-  // assign core_axi_d_rvalid        = core_axi_rvalid && core_axi_sel_data_keep;
-  // assign core_axi_i_narrow_rvalid = core_axi_rvalid && !core_axi_sel_data_keep;
-  // assign {core_axi_we, core_axi_be, core_axi_addr, core_axi_wdata} = core_axi_concat;
-
-//  rr_arb_tree #(.NumIn(2), .DataWidth(32+32+4+1), .FairArb(1'b0)) core_axi_arbiter(
-//      .clk_i(clk),
-//      .rst_ni(rst_n),
-//      .flush_i(1'b0),
-//      .rr_i(1'b0),
-
-//      .req_i  ( {core_axi_d_req,    core_axi_i_narrow_req   } ),
-//      .gnt_o  ( {core_axi_d_gnt,    core_axi_i_narrow_gnt   } ),
-//      .data_i ( {core_axi_d_concat, core_axi_i_narrow_concat} ),
-
-//      .req_o  ( core_axi_req    ),
-//      .gnt_i  ( core_axi_gnt    ),
-//      .data_o ( core_axi_concat ),
-
-//      .idx_o(core_axi_sel_data)
-//  );
-
-//  always @(posedge clk)
-//      if (core_axi_req && core_axi_gnt)
-//          core_axi_sel_data_keep <= core_axi_sel_data;
-
   // Main core axi bus
   AXI_BUS #(
     .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
     .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-    .AXI_ID_WIDTH     ( AXI_ID_MASTER_WIDTH ),
+    .AXI_ID_WIDTH     ( MST_ID_W ),
     .AXI_USER_WIDTH   ( AXI_USER_WIDTH      )
   ) core_master_int();
 
@@ -380,7 +276,7 @@ module Xcore_region
   AXI_BUS_INTF #(
     .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
     .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-    .AXI_ID_WIDTH     ( AXI_ID_MASTER_WIDTH ),
+    .AXI_ID_WIDTH     ( SLV_ID_W),
     .AXI_USER_WIDTH   ( AXI_USER_WIDTH      )
   ) axi_master_int [1:0]();
   
@@ -388,7 +284,7 @@ module Xcore_region
   AXI_BUS_INTF #(
     .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
     .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-    .AXI_ID_WIDTH     ( AXI_ID_MASTER_WIDTH ),
+    .AXI_ID_WIDTH     ( MST_ID_W ),
     .AXI_USER_WIDTH   ( AXI_USER_WIDTH      )
   ) arbiter_output_int();
 
@@ -498,7 +394,7 @@ module Xcore_region
     .SH_CACHE_SIZE         (4*1024),      // 4KB L2 cache
     .PRI_NB_WAYS           (2),           // 2-way set associative L1
     .PRI_CACHE_SIZE        (512),         // 512B L1 cache
-    .AXI_ID                (AXI_ID_MASTER_WIDTH),          // Use the same AXI parameters as your core_master
+    .AXI_ID                (SLV_ID_W),          // Use the same AXI parameters as your core_master
     .AXI_ADDR              (AXI_ADDR_WIDTH),
     .AXI_DATA              (AXI_DATA_WIDTH),          // The AXI bus is 64-bit wide
     .AXI_USER              (AXI_USER_WIDTH)
@@ -584,7 +480,7 @@ module Xcore_region
   #(
     .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
     .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-    .AXI_ID_WIDTH     ( AXI_ID_MASTER_WIDTH ),
+    .AXI_ID_WIDTH     ( SLV_ID_W),
     .AXI_USER_WIDTH   ( AXI_USER_WIDTH      ),
     .REGISTERED_GRANT ( "FALSE"             )
   )
@@ -611,11 +507,6 @@ module Xcore_region
   // PULP hier_icache - NEW axi arbiter for arbitrating instruction and data
   //----------------------------------------------------------------------------//
 
-  localparam int SLV_ID_W = AXI_ID_MASTER_WIDTH; // Should be 10
-  localparam int MST_ID_W = AXI_ID_MASTER_WIDTH + $clog2(2); // Should be 10 + 1 = 11
-
-  // assign axi_master_int[0] = axi_master_int[0];
-  // assign axi_master_int[1] = data_master_int;
 
   axi_mux_intf #(
     .NO_SLV_PORTS    ( 2              ),
@@ -641,7 +532,7 @@ module Xcore_region
   axi_intf_to_bus_bridge #(
     .AXI_ADDR_WIDTH   ( AXI_ADDR_WIDTH      ),
     .AXI_DATA_WIDTH   ( AXI_DATA_WIDTH      ),
-    .AXI_ID_WIDTH     ( AXI_ID_MASTER_WIDTH ),
+    .AXI_ID_WIDTH     ( MST_ID_W            ),
     .AXI_USER_WIDTH   ( AXI_USER_WIDTH      )
   )
   final_axi_bridge 
@@ -650,9 +541,7 @@ module Xcore_region
     .m_axi(core_master_int) 
   );
 
-  // NO DATA/INSTR CACHE IN FPGNIX	
-  assign data_cache_en_o = 0 ;  
-  assign instr_cache_en_o = 0 ; 
+
 
   //----------------------------------------------------------------------------//
   // AXI Slices
@@ -663,8 +552,8 @@ module Xcore_region
     .AXI_ADDR_WIDTH ( AXI_ADDR_WIDTH       ),
     .AXI_DATA_WIDTH ( AXI_DATA_WIDTH       ),
     .AXI_USER_WIDTH ( AXI_USER_WIDTH       ),
-    .AXI_ID_WIDTH   ( AXI_ID_MASTER_WIDTH  ),
-    .SLICE_DEPTH    ( 2                    )
+    .AXI_ID_WIDTH   ( MST_ID_W             ),
+    .SLICE_DEPTH    ( 2                   )
   )
   axi_slice_core2axi
   (
@@ -765,11 +654,10 @@ instr_ram_wrap #(
   .wdata_i     ( axi_instr_wdata ),
   .rdata_o     ( instr_mem_rdata ),
   .we_i        ( 1'b0),// put comment insted of this > //axi_instr_we ),
-  .be_i        ( axi_instr_be ),
+  .be_i        ( 16'hffff),//axi_instr_be ),
   .bypass_en_i ( testmode_i ),
   .ram_ctrl    ( ram_ctrl[INSTR_MEM_CTRL_DW-1:0] )
 );
-
 
 
   //----------------------------------------------------------------------------//
