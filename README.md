@@ -31,7 +31,7 @@ To support this design, we introduced an **AXI arbiter/multiplexer**. This was r
 
 We adopted the arbiter/mux module from the [PULP AXI repository](https://github.com/pulp-platform/axi).  
 
-The resulting block diagram of our implementation:  
+The resulting block diagram of our implementation (Blocks that are in Yellow are the one we changed):  
 <img width="6000" height="3375" alt="Integrated block diagram" src="https://github.com/user-attachments/assets/ce623023-f93b-4774-81a9-99bd89856377" />
 
 ---
