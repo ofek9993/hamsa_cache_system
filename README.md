@@ -7,7 +7,8 @@ For details about the AXI components, see:
 https://github.com/pulp-platform/axi
 
 A very basic overview of our testbench environment:
-<img width="1976" height="1367" alt="image" src="https://github.com/user-attachments/assets/ee4368b0-b071-450c-95c5-98fc3dad9d94" />
+
+<img width="6000" height="3375" alt="block" src="https://github.com/user-attachments/assets/ce623023-f93b-4774-81a9-99bd89856377" />
 
 We added the cache system in:
 ddp23_pnx/src/ips/hier_icache
