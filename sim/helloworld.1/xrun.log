@@ -1,0 +1,2258 @@
+xrun(64): 23.09-s013: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	23.09-s013: Started on Aug 21, 2025 at 12:32:42 UTC
+irun
+	-unbuffered
+	-sv
+	-v93
+	-access rw
+	+TB=tb
+	-timescale 1ns/1ps
+	+define+STD_SIM
+	+define+HAMSA_DIX
+	+define+HAMSA_PREFETCH
+	-top fpgnix_tb
+	+define+RTL_SIM
+	+define+FAKED_FAST_SIM_ALTPLL
+	+define+SMART_UART_TB_NON_R2D2
+	+define+HAMSA_DI
+	+define+ALTERA
+	-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/altera.f
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/altera_sim/altera_mf.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_16384x32.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_16384x128.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_8192x32.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_2048x128.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_4096x128.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_10240x128.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_7680x128.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_49152x32.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sp_ram_1024x256_be.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sp_ram_256x256_be.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/pll.v
+	+define+CLK_PERIOD=100
+	+define+BAUD_RATE=2500000
+	+define+TRACE_EXECUTION
+	-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/fpgnix_tb.f
+		+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/
+		+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/soc/
+		+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/soc/includes/
+		+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit
+		+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga
+		-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/fpgnix.f
+			/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga/fpgnix_address_map.vh
+			-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/pulpenix.f
+				+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/includes/
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/std_cells.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_and.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_and3.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_inv.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_buf.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_mx2.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_mx4.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ff_arst.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ffsync_arst.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_tie_hi.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/rst_sync.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/glitch_free_clock_mux.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_cg.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ff.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ffsync.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ff_aset.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ffsync_aset.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_or.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_tie_lo.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/reset_sample.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/sync_2ff.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/sync_2ff_arst.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/sync_2ff_aset.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_nor.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_xor.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_xnor.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ffn_arst.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_nand.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/sync_2ffn_arst.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_lat.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_lat_trans_low.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_slice.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_ar_buffer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_aw_buffer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_b_buffer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_r_buffer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_slice.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_w_buffer.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/axi_slice_dc.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_data_buffer.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_full_detector.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_synchronizer.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_token_ring_fifo_din.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_token_ring_fifo_dout.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_token_ring.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_uart_slave/axi_uart_slave.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_uart_slave/axi_uart_slave.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/axi_spi_slave.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/axi_spi_slave.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_axi_plug.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_cmd_parser.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_controller.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_dc_fifo.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_regs.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_rx.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_syncro.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_tx.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/axi_spi_master.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_clkgen.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_controller.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_fifo.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_rx.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_tx.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_node.f
+					+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_address_decoder_AR.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_address_decoder_AW.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_address_decoder_BR.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_address_decoder_BW.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_address_decoder_DW.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_AR_allocator.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_ArbitrationTree.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_AW_allocator.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_BR_allocator.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_BW_allocator.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_DW_allocator.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_FanInPrimitive_Req.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_multiplexer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_node.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_request_block.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_response_block.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_RR_Flag_Req.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/axi_mem_if_DP.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/dummy_mem.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/axi_mem_if_SP.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/axi_mem_if_SP_async.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/axi_read_only_ctrl.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/axi_write_only_ctrl.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi2apb/axi2apb.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi2apb/axi2apb32.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi2apb/axi2apb.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/core2axi/core2axi.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/core2axi/core2axi.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_node/apb_node.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_node/apb_node.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_node/apb_node_wrap.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/apb_uart_sv.f
+					+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/apb_uart.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/uart_interrupt.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/uart_rx.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/uart_tx.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/io_generic_fifo.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/openocd_bitbang.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_timer/apb_timer.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_timer/apb_timer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_timer/timer.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_i2c/apb_i2c.f
+					+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_i2c/
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_i2c/apb_i2c.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_i2c/i2c_master_bit_ctrl.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_i2c/i2c_master_byte_ctrl.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_event_unit/apb_event_unit.f
+					+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_event_unit/include/
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_event_unit/apb_event_unit.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_event_unit/generic_service_unit.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_event_unit/sleep_unit.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_fll_if/apb_fll_if.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_fll_if/apb_fll_if.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_pulpino/apb_pulpino.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_pulpino/apb_pulpino.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_gpio/apb_gpio.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_gpio/apb_gpio.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_spi_master/apb_spi_master.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_spi_master/apb_spi_master.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_spi_master/spi_master_apb_if.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb2per/apb2per.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb2per/apb2per.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/riscv.f
+					+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/include/
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/fpnew/src/fpnew_pkg.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/include/riscv_defines.sv
+					-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/mul/mul.f
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/mul/rtl/riscv_mult.sv
+					-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/riscv-dbg.f
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_pkg.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_wrap.v
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_csrs.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_mem.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_sba.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_top.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dmi_cdc.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dmi_jtag.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dmi_jtag_tap.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/debug_rom/debug_rom.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/common_cells/src/cdc_2phase.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/common_cells/src/deprecated/fifo_v2.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/common_cells/src/fifo_v3.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/interco/RTL/lint_2_axi.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/include/apu_core_package.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/include/apu_macros.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/include/riscv_tracer_defines.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/register_file_test_wrap.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_L0_buffer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_L0_buffer_sampled.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_alu.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_alu_basic.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_alu_div.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_apu_disp.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_compressed_decoder.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_controller.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_core.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_cs_registers.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_debug_unit.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_ex_stage.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_fetch_fifo.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_hwloop_controller.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_hwloop_regs.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_id_stage.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_if_stage.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_int_controller.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_load_store_unit.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_pmp.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_prefetch_L0_buffer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_prefetch_buffer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/hamsa_L0_cache.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/hamsa_prefetch.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_register_file.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_tracer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_decoder.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/issue2.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/issue2_allocator.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/issue2_fetch_alloc_mini_decode.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/issue2_fetcher.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/di_interfaces/di_ctrl_interface.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/di_interfaces/di_ifstage_interface.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/di_interfaces/di_pfb_interface.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/di_interfaces/di_reg_xfw_interface.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/di_interfaces/di_regfile_interface.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/axi_mem_if_SP_wrap.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/axi_mem_if_SP_async_wrap.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/axi_slice_wrap.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/core2axi_wrap.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/core_region.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/instr_ram_wrap.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/ram_mux.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/inst_narrower.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/common_cells/src/rr_arb_tree.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/data/data_cache_datapath.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/data/data_cache_L0.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/instr/instr_cache_datapath.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/instr/instr_cache_L0.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/cache_algo.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/cache_LRU.sv
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/riscv-exp.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xcore_region.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xissue2.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xregister_file_test_wrap.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_controller.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_core.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_id_stage.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_register_file.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_register_file_MPSCM_wrap.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_register_file_mux.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xram_mux.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/mpscm_model.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/mpscm_model_wrap.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/work/d_file
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_clkgen.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_cntif.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_core.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_machine.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_sfi_mm.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_shifter.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_sync.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_top.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/axi2cbus/work/d_file
+					+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/axi2cbus/hdl
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/axi2cbus/hdl/axi2cbus_top.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/axi2cbus/hdl/axi_slv_if.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/axi2cbus/hdl/cbus_slv_if.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/work/pnx_d_file
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_an2.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_clockgate.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_inv.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_mx2.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_xor2.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_tieoff.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_glitch_free_mux.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_nand2.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/work/pnx_d_file
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_reset_sync.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_sync2_arst.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_sync2.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_sync2n_arst.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/work/pnx_d_file
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/sc_fifo.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/intc.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/work/d_file
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/hdl/gp_dma_arb.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/hdl/gp_dma_fifo.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/hdl/gp_dma_regs.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/hdl/gp_dma.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/hdl/gp_dma_top.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/sansa_crg_legacy.f
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/apb2cbus.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/generic_clk_div.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/generic_fifo_crgn.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/generic_fifo_env_2prf_a128d32.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/generic_fifo_env_2prf_a256d24.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_bscan_cell.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_chip_jtag.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_buf.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_clockgate_cust.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_mx4.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_nor2.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_or2.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_ff_arst.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_lat.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_mx3.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_mx4.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_scan_ff.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_reset_cross.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_sync2_arst_bus.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/cbus2axi/work/d_file
+					-incdir /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/cbus2axi/hdl
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/cbus2axi/hdl/axi_mstr_if.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/cbus2axi/hdl/cbus2axi_top.v
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/cbus2axi/hdl/cbus_mstr_if.v
+				-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/hier_icache.f
+					-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/axi.f
+						+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/include
+						+INCDIR+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/include
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/src/axi_pkg.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/src/axi_intf.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/src/axi_mux.sv
+						/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/src/axi_id_prepend.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/top/icache_hier_top.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1_cache/pri_icache_controller.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1_cache/pri_icache.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1_cache/register_file_1w_multi_port_read.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1_cache/register_file_1w_multi_port_read_test_wrap.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1_cache/refill_arbiter.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/AXI4_REFILL_Resp_Deserializer.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/share_icache.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/share_icache_controller.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/RefillTracker_4.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/REP_buffer_4.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/ram_ws_rs_data_scm.sv
+					+define+USE_SRAM
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/ram_ws_rs_tag_scm.sv
+					+define+USE_SRAM
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/src/lfsr_8bit.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/src/onehot_to_bin.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/src/cf_math_pkg.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/src/lzc.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/src/spill_register.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/tech_cells_generic/src/deprecated/cluster_clk_cells.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/tech_cells_generic/src/rtl/tc_clk.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/DistributedArbitrationNetwork_Req_icache_intc.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/DistributedArbitrationNetwork_Resp_icache_intc.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/icache_intc.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/Req_Arb_Node_icache_intc.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/Resp_Arb_Node_icache_intc.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/RoutingBlock_Req_icache_intc.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/RoutingBlock_2ch_Req_icache_intc.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/RoutingBlock_Resp_icache_intc.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/lint_mux.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/scm/latch_scm/register_file_1r_1w_test_wrap.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/scm/latch_scm/register_file_1r_1w.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/pulp_interfaces.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi_intf_to_bus_bridge.sv
+					/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi_arbiter_fixed.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/msystem.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/includes/remote_access_intrfc.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/sp_ram_wrap.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/arm_modular_128x4096_sram_hs.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/arm_modular_128x4096_sram_hd.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram16384X32_bank_i.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram2048X128_wbp_bank_i.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram2048X128_bank_i.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram4096X128_bank_i.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram8192X32_bank_i.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram1024X8_i.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/spram.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta1024x8m4s_120a.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta16384x32m16sw_120a.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta2048x128m4sw_120a.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta2048x32m4sw_120a.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta4096x128m4sw_120a.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta8192x32m16sw_120a.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta8192x32m8sw_120a.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta2048x32m8sw_120a.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc65/hd/ARM_SPSRAM_32X8192_M16_MEM.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc65/hs/ARM_SPSRAM_128X2048_M4_MEM.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc65/hs/ARM_SPSRAM_64X4096_M8_MEM.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc65/hd/ARM_SPSRAM_32X16384_M16_MEM.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/axi2apb_wrap.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/axi_node_intf_wrap.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/axi_spi_slave_wrap.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/boot_code.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/boot_rom_wrap.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/clk_rst_gen.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/periph_bus_wrap.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/peripherals.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_gating.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_inverter.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_mux2.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/generic_fifo.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/pulp_clock_inverter.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/pulp_clock_mux2.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/rstgen.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/sp_ram.sv
+			-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox.f
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_mfarm.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xfarm.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_aa.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_dmy1.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_dmy2.sv
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_dmy3.sv
+			-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/altera_ddr_64bit.f
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_addr_cmd.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_addr_cmd_wrap.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_arbiter.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_buffer_manager.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_buffer.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_burst_gen.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_burst_tracking.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_cmd_gen.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_controller_st_top.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_controller.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_csr.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_dataid_manager.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ddr2_odt_gen.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ddr3_odt_gen.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_decoder_32_syn.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_decoder_64_syn.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_decoder.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_encoder_32_syn.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_encoder_64_syn.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_encoder_decoder_wrapper.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_encoder.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_fifo.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_input_if.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_list.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_lpddr2_addr_cmd.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_mm_st_converter.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_odt_gen.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_rank_timer.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_rdata_path.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_rdwr_data_tmg.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_sideband.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_tbp.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_timing_param.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_wdata_path.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_phy_defines.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_alt_mem_ddrx_controller_top.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_controller_phy.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_phy.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_phy_alt_mem_phy_seq_wrapper.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_phy_alt_mem_phy.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_phy_alt_mem_phy_seq.vhd
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_phy_alt_mem_phy_pll.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/altera_primitives.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/cycloneiii_atoms.v
+			-f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/src/ddr.f
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/src/ddr2_read_write.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/src/sim_psd_ddr_intrfc.v
+				/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/src/ddr2_sodimm.v
+			/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga/faked_fast_sim_altpll.v
+			/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga/vqm_msystem_wrap.v
+			/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga/fpgnix_gpp.sv
+			/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga/fpgnix_hir.sv
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/fpgnix_tb.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/smart_uart_tb_non_r2d2.sv
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/py_spi_tb/sv/sock.c
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/py_spi_tb/sv/sock.sv
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/ddr2_64bit_mem_model.v
+		/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/ddr2_dimm.v
+
+   User defined plus("+") options:
+	+TB=tb
+
+xrun: *W,NCEXDEP: Executable (irun) is deprecated. Use (xrun) instead.
+SOFTINCLUDE $XPEDION/aa/cds.lib
+|
+xrun: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,12): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $EMXHOME/emxinterface/cds.lib
+|
+xrun: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,14): cds.lib Invalid environment variable ''.
+ASSIGN Cadence_libs COMBINE analogLib rfLib rfExamples ahdlLib passiveLib basic US_8ths sbaLib bmslib functional cdsDefTechLib
+|
+xrun: *W,DLCOMB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,17): cds.lib COMBINE attribute library not defined 'cdsDefTechLib' (cds.lib command ignored).
+ASSIGN cdsDefTechLib DISPLAY Cadence
+|
+xrun: *W,DLCLIB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,31): cds.lib Library not defined 'cdsDefTechLib' (cds.lib command ignored).
+SOFTINCLUDE $XPEDION/aa/cds.lib
+|
+xrun: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,12): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $EMXHOME/emxinterface/cds.lib
+|
+xrun: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,14): cds.lib Invalid environment variable ''.
+ASSIGN Cadence_libs COMBINE analogLib rfLib rfExamples ahdlLib passiveLib basic US_8ths sbaLib bmslib functional cdsDefTechLib
+|
+xrun: *W,DLCOMB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,17): cds.lib COMBINE attribute library not defined 'cdsDefTechLib' (cds.lib command ignored).
+ASSIGN cdsDefTechLib DISPLAY Cadence
+|
+xrun: *W,DLCLIB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,31): cds.lib Library not defined 'cdsDefTechLib' (cds.lib command ignored).
+SOFTINCLUDE $XPEDION/aa/cds.lib
+|
+xrun: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,12): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $EMXHOME/emxinterface/cds.lib
+|
+xrun: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,14): cds.lib Invalid environment variable ''.
+ASSIGN Cadence_libs COMBINE analogLib rfLib rfExamples ahdlLib passiveLib basic US_8ths sbaLib bmslib functional cdsDefTechLib
+|
+xrun: *W,DLCOMB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,17): cds.lib COMBINE attribute library not defined 'cdsDefTechLib' (cds.lib command ignored).
+ASSIGN cdsDefTechLib DISPLAY Cadence
+|
+xrun: *W,DLCLIB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,31): cds.lib Library not defined 'cdsDefTechLib' (cds.lib command ignored).
+SOFTINCLUDE $XPEDION/aa/cds.lib
+|
+xrun: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,12): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $EMXHOME/emxinterface/cds.lib
+|
+xrun: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,14): cds.lib Invalid environment variable ''.
+ASSIGN Cadence_libs COMBINE analogLib rfLib rfExamples ahdlLib passiveLib basic US_8ths sbaLib bmslib functional cdsDefTechLib
+|
+xrun: *W,DLCOMB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,17): cds.lib COMBINE attribute library not defined 'cdsDefTechLib' (cds.lib command ignored).
+ASSIGN cdsDefTechLib DISPLAY Cadence
+|
+xrun: *W,DLCLIB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,31): cds.lib Library not defined 'cdsDefTechLib' (cds.lib command ignored).
+SOFTINCLUDE $XPEDION/aa/cds.lib
+|
+xrun: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,12): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $EMXHOME/emxinterface/cds.lib
+|
+xrun: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,14): cds.lib Invalid environment variable ''.
+ASSIGN Cadence_libs COMBINE analogLib rfLib rfExamples ahdlLib passiveLib basic US_8ths sbaLib bmslib functional cdsDefTechLib
+|
+xrun: *W,DLCOMB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,17): cds.lib COMBINE attribute library not defined 'cdsDefTechLib' (cds.lib command ignored).
+ASSIGN cdsDefTechLib DISPLAY Cadence
+|
+xrun: *W,DLCLIB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,31): cds.lib Library not defined 'cdsDefTechLib' (cds.lib command ignored).
+SOFTINCLUDE $XPEDION/aa/cds.lib
+|
+xmvlog: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,12): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $EMXHOME/emxinterface/cds.lib
+|
+xmvlog: *W,DLCVAR (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,14): cds.lib Invalid environment variable ''.
+ASSIGN Cadence_libs COMBINE analogLib rfLib rfExamples ahdlLib passiveLib basic US_8ths sbaLib bmslib functional cdsDefTechLib
+|
+xmvlog: *W,DLCOMB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,17): cds.lib COMBINE attribute library not defined 'cdsDefTechLib' (cds.lib command ignored).
+ASSIGN cdsDefTechLib DISPLAY Cadence
+|
+xmvlog: *W,DLCLIB (/tools/rubyeda/RubySKILL/r20250428.1/cds.site.lib,31): cds.lib Library not defined 'cdsDefTechLib' (cds.lib command ignored).
+USE_SRAM
+        |
+xmvlog: *W,MACCDF (-DEFINE macro,1|8): The text macro 'USE_SRAM' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition for -DEFINE option found on the command line after the first definition.
+xmvlog: *W,NOTIND: unable to access -INCDIR /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/soc/includes/ (No such file or directory).
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/altera_sim/altera_mf.v
+	module worklib.lcell:v
+		errors: 0, warnings: 0
+	module worklib.ALTERA_MF_MEMORY_INITIALIZATION:v
+		errors: 0, warnings: 0
+	module worklib.ALTERA_MF_HINT_EVALUATION:v
+		errors: 0, warnings: 0
+	module worklib.ALTERA_DEVICE_FAMILIES:v
+		errors: 0, warnings: 0
+	module worklib.dffp:v
+		errors: 0, warnings: 0
+	module worklib.pll_iobuf:v
+		errors: 0, warnings: 0
+	module worklib.stx_m_cntr:v
+		errors: 0, warnings: 0
+	module worklib.stx_n_cntr:v
+		errors: 0, warnings: 0
+	module worklib.stx_scale_cntr:v
+		errors: 0, warnings: 0
+	module worklib.MF_pll_reg:v
+		errors: 0, warnings: 0
+	module worklib.MF_stratix_pll:v
+		errors: 0, warnings: 0
+	module worklib.arm_m_cntr:v
+		errors: 0, warnings: 0
+	module worklib.arm_n_cntr:v
+		errors: 0, warnings: 0
+	module worklib.arm_scale_cntr:v
+		errors: 0, warnings: 0
+	module worklib.MF_stratixii_pll:v
+		errors: 0, warnings: 0
+	module worklib.ttn_m_cntr:v
+		errors: 0, warnings: 0
+	module worklib.ttn_n_cntr:v
+		errors: 0, warnings: 0
+	module worklib.ttn_scale_cntr:v
+		errors: 0, warnings: 0
+	module worklib.MF_stratixiii_pll:v
+		errors: 0, warnings: 0
+	module worklib.cda_m_cntr:v
+		errors: 0, warnings: 0
+	module worklib.cda_n_cntr:v
+		errors: 0, warnings: 0
+	module worklib.cda_scale_cntr:v
+		errors: 0, warnings: 0
+	module worklib.MF_cycloneiii_pll:v
+		errors: 0, warnings: 0
+	module worklib.MF_cycloneiiigl_m_cntr:v
+		errors: 0, warnings: 0
+	module worklib.MF_cycloneiiigl_n_cntr:v
+		errors: 0, warnings: 0
+	module worklib.MF_cycloneiiigl_scale_cntr:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiiigl_post_divider:v
+		errors: 0, warnings: 0
+	module worklib.MF_cycloneiiigl_pll:v
+		errors: 0, warnings: 0
+	module worklib.altpll:v
+		errors: 0, warnings: 0
+	module worklib.altlvds_rx:v
+		errors: 0, warnings: 0
+	module worklib.stratix_lvds_rx:v
+		errors: 0, warnings: 0
+	module worklib.stratixgx_dpa_lvds_rx:v
+		errors: 0, warnings: 0
+	module worklib.stratixii_lvds_rx:v
+		errors: 0, warnings: 0
+	module worklib.flexible_lvds_rx:v
+		errors: 0, warnings: 0
+	module worklib.stratixiii_lvds_rx:v
+		errors: 0, warnings: 0
+	module worklib.stratixiii_lvds_rx_channel:v
+		errors: 0, warnings: 0
+	module worklib.stratixiii_lvds_rx_dpa:v
+		errors: 0, warnings: 0
+	module worklib.altlvds_tx:v
+		errors: 0, warnings: 0
+	module worklib.stratixv_local_clk_divider:v
+		errors: 0, warnings: 0
+	module worklib.stratix_tx_outclk:v
+		errors: 0, warnings: 0
+	module worklib.stratixii_tx_outclk:v
+		errors: 0, warnings: 0
+	module worklib.flexible_lvds_tx:v
+		errors: 0, warnings: 0
+	module worklib.dcfifo_dffpipe:v
+		errors: 0, warnings: 0
+	module worklib.dcfifo_fefifo:v
+		errors: 0, warnings: 0
+	module worklib.dcfifo_async:v
+		errors: 0, warnings: 0
+	module worklib.dcfifo_sync:v
+		errors: 0, warnings: 0
+	module worklib.dcfifo_low_latency:v
+		errors: 0, warnings: 0
+	module worklib.dcfifo_mixed_widths:v
+		errors: 0, warnings: 0
+	module worklib.dcfifo:v
+		errors: 0, warnings: 0
+	module worklib.altera_syncram_derived:v
+		errors: 0, warnings: 0
+	module worklib.altera_syncram_derived_forwarding_logic:v
+		errors: 0, warnings: 0
+	module worklib.altaccumulate:v
+		errors: 0, warnings: 0
+	module worklib.altmult_accum:v
+		errors: 0, warnings: 0
+	module worklib.altmult_add:v
+		errors: 0, warnings: 0
+	module worklib.altfp_mult:v
+		errors: 0, warnings: 0
+	module worklib.altsqrt:v
+		errors: 0, warnings: 0
+	module worklib.altclklock:v
+		errors: 0, warnings: 0
+	module worklib.altddio_in:v
+		errors: 0, warnings: 0
+	module worklib.altddio_out:v
+		errors: 0, warnings: 0
+	module worklib.altddio_bidir:v
+		errors: 0, warnings: 0
+	module worklib.altdpram:v
+		errors: 0, warnings: 0
+	module worklib.altsyncram:v
+		errors: 0, warnings: 0
+	module worklib.altsyncram_body:v
+		errors: 0, warnings: 0
+	module worklib.alt3pram:v
+		errors: 0, warnings: 0
+	module worklib.parallel_add:v
+		errors: 0, warnings: 0
+	module worklib.scfifo:v
+		errors: 0, warnings: 0
+	module worklib.altshift_taps:v
+		errors: 0, warnings: 0
+	module worklib.a_graycounter:v
+		errors: 0, warnings: 0
+	module worklib.altsquare:v
+		errors: 0, warnings: 0
+	module worklib.altera_std_synchronizer:v
+		errors: 0, warnings: 0
+	module worklib.altera_std_synchronizer_bundle:v
+		errors: 0, warnings: 0
+	module worklib.alt_cal:v
+		errors: 0, warnings: 0
+	module worklib.alt_cal_mm:v
+		errors: 0, warnings: 0
+	module worklib.alt_cal_c3gxb:v
+		errors: 0, warnings: 0
+	module worklib.alt_cal_sv:v
+		errors: 0, warnings: 0
+	module worklib.alt_cal_av:v
+		errors: 0, warnings: 0
+	module worklib.alt_aeq_s4:v
+		errors: 0, warnings: 0
+	module worklib.alt_eyemon:v
+		errors: 0, warnings: 0
+	module worklib.alt_dfe:v
+		errors: 0, warnings: 0
+`define CLK_PERIOD 100000
+                         |
+xmvlog: *W,MACNDF (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/altera_sim/altera_mf.v,54257|25): The text macro 'CLK_PERIOD' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition found in the Verilog source code.
+	module worklib.signal_gen:v
+		errors: 0, warnings: 0
+	module worklib.jtag_tap_controller:v
+		errors: 0, warnings: 0
+	module worklib.dummy_hub:v
+		errors: 0, warnings: 0
+	module worklib.sld_virtual_jtag:v
+		errors: 0, warnings: 0
+	module worklib.sld_signaltap:v
+		errors: 0, warnings: 0
+	module worklib.altstratixii_oct:v
+		errors: 0, warnings: 0
+	module worklib.altparallel_flash_loader:v
+		errors: 0, warnings: 0
+	module worklib.altserial_flash_loader:v
+		errors: 0, warnings: 0
+	module worklib.alt_fault_injection:v
+		errors: 0, warnings: 0
+	module worklib.sld_virtual_jtag_basic:v
+		errors: 0, warnings: 0
+	module worklib.altsource_probe:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram.v
+	module worklib.altera_sram:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_16384x32.v
+	module worklib.altera_sram_16384x32:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_16384x128.v
+	module worklib.altera_sram_16384x128:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_8192x32.v
+	module worklib.altera_sram_8192x32:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_2048x128.v
+	module worklib.altera_sram_2048x128:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_4096x128.v
+	module worklib.altera_sram_4096x128:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_10240x128.v
+	module worklib.altera_sram_10240x128:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_7680x128.v
+	module worklib.altera_sram_7680x128:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sram_49152x32.v
+	module worklib.altera_sram_49152x32:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sp_ram_1024x256_be.v
+	module worklib.altera_sp_ram_1024x256_be:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/altera_sp_ram_256x256_be.v
+	module worklib.altera_sp_ram_256x256_be:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/fpga/pll.v
+	module worklib.pll:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga/fpgnix_address_map.vh
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_and.v
+	module worklib.m_and:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_and3.v
+	module worklib.m_and3:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_inv.v
+	module worklib.m_inv:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_buf.v
+	module worklib.m_buf:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_mx2.v
+	module worklib.m_mx2:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_mx4.v
+	module worklib.m_mx4:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ff_arst.v
+	module worklib.m_ff_arst:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ffsync_arst.v
+	module worklib.m_ffsync_arst:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_tie_hi.v
+	module worklib.m_tie_hi:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/rst_sync.v
+	module worklib.rst_sync:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/glitch_free_clock_mux.v
+	module worklib.m_glitch_free_clock_mux:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_cg.v
+	module worklib.m_cg:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ff.v
+	module worklib.m_ff:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ffsync.v
+	module worklib.m_ffsync:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ff_aset.v
+	module worklib.m_ff_aset:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ffsync_aset.v
+	module worklib.m_ffsync_aset:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_or.v
+	module worklib.m_or:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_tie_lo.v
+	module worklib.m_tie_lo:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/reset_sample.v
+	module worklib.reset_sample:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/sync_2ff.v
+	module worklib.sync_2ff:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/sync_2ff_arst.v
+	module worklib.sync_2ff_arst:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/sync_2ff_aset.v
+	module worklib.sync_2ff_aset:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_nor.v
+	module worklib.m_nor:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_xor.v
+	module worklib.m_xor:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_xnor.v
+	module worklib.m_xnor:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_ffn_arst.v
+	module worklib.m_ffn_arst:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_nand.v
+	module worklib.m_nand:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/sync_2ffn_arst.v
+	module worklib.sync_2ffn_arst:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_lat.v
+	module worklib.m_lat:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/std_cells/rtl/m_lat_trans_low.v
+	module worklib.m_lat_trans_low:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_ar_buffer.sv
+	module worklib.axi_ar_buffer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_aw_buffer.sv
+	module worklib.axi_aw_buffer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_b_buffer.sv
+	module worklib.axi_b_buffer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_r_buffer.sv
+	module worklib.axi_r_buffer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_slice.sv
+	module worklib.axi_slice:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice/axi_w_buffer.sv
+	module worklib.axi_w_buffer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_data_buffer.v
+	module worklib.dc_data_buffer:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_full_detector.v
+	module worklib.dc_full_detector:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_synchronizer.v
+	module worklib.dc_synchronizer:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_token_ring_fifo_din.v
+	module worklib.dc_token_ring_fifo_din:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_token_ring_fifo_dout.v
+	module worklib.dc_token_ring_fifo_dout:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_token_ring.v
+	module worklib.dc_token_ring:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_uart_slave/axi_uart_slave.sv
+	interface worklib.AXI_BUS:sv
+		errors: 0, warnings: 0
+	module worklib.axi_uart_slave:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/axi_spi_slave.sv
+	module worklib.axi_spi_slave:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_axi_plug.sv
+	module worklib.spi_slave_axi_plug:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_cmd_parser.sv
+	module worklib.spi_slave_cmd_parser:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_controller.sv
+	module worklib.spi_slave_controller:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_dc_fifo.sv
+	module worklib.spi_slave_dc_fifo:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_regs.sv
+	module worklib.spi_slave_regs:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_rx.sv
+	module worklib.spi_slave_rx:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_syncro.sv
+	module worklib.spi_slave_syncro:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_tx.sv
+	module worklib.spi_slave_tx:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_clkgen.sv
+	module worklib.spi_master_clkgen:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_controller.sv
+`define SPI_QUAD_TX 2'b01
+                         |
+xmvlog: *W,MACRDF (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_controller.sv,12|25): text macro 'SPI_QUAD_TX' redefined - replaced with new definition, Previous definition was found here ('/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_controller.sv',13|19 ).
+`define SPI_QUAD_RX 2'b10
+                         |
+xmvlog: *W,MACRDF (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_controller.sv,13|25): text macro 'SPI_QUAD_RX' redefined - replaced with new definition, Previous definition was found here ('/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_slave/spi_slave_controller.sv',14|19 ).
+	module worklib.spi_master_controller:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_fifo.sv
+`define log2(VALUE) ((VALUE) < ( 1 ) ? 0 : (VALUE) < ( 2 ) ? 1 : (VALUE) < ( 4 ) ? 2 : (VALUE) < ( 8 ) ? 3 : (VALUE) < ( 16 )  ? 4 : (VALUE) < ( 32 )  ? 5 : (VALUE) < ( 64 )  ? 6 : (VALUE) < ( 128 ) ? 7 : (VALUE) < ( 256 ) ? 8 : (VALUE) < ( 512 ) ? 9 : (VALUE) < ( 1024 ) ? 10 : (VALUE) < ( 2048 ) ? 11 : (VALUE) < ( 4096 ) ? 12 : (VALUE) < ( 8192 ) ? 13 : (VALUE) < ( 16384 ) ? 14 : (VALUE) < ( 32768 ) ? 15 : (VALUE) < ( 65536 ) ? 16 : (VALUE) < ( 131072 ) ? 17 : (VALUE) < ( 262144 ) ? 18 : (VALUE) < ( 524288 ) ? 19 : (VALUE) < ( 1048576 ) ? 20 : (VALUE) < ( 1048576 * 2 ) ? 21 : (VALUE) < ( 1048576 * 4 ) ? 22 : (VALUE) < ( 1048576 * 8 ) ? 23 : (VALUE) < ( 1048576 * 16 ) ? 24 : 25)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+xmvlog: *W,MACRDF (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_fifo.sv,11|687): text macro 'log2' redefined - replaced with new definition, Previous definition was found here ('/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_slice_dc/dc_data_buffer.v',24|20 ).
+	module worklib.spi_master_fifo:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_rx.sv
+	module worklib.spi_master_rx:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_spi_master/spi_master_tx.sv
+	module worklib.spi_master_tx:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_address_decoder_AR.sv
+	module worklib.axi_address_decoder_AR:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_address_decoder_AW.sv
+	module worklib.axi_address_decoder_AW:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_address_decoder_BR.sv
+	module worklib.axi_address_decoder_BR:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_address_decoder_BW.sv
+	module worklib.axi_address_decoder_BW:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_address_decoder_DW.sv
+	module worklib.axi_address_decoder_DW:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_AR_allocator.sv
+	module worklib.axi_AR_allocator:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_ArbitrationTree.sv
+	module worklib.axi_ArbitrationTree:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_AW_allocator.sv
+	module worklib.axi_AW_allocator:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_BR_allocator.sv
+	module worklib.axi_BR_allocator:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_BW_allocator.sv
+	module worklib.axi_BW_allocator:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_DW_allocator.sv
+	module worklib.axi_DW_allocator:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_FanInPrimitive_Req.sv
+	module worklib.axi_FanInPrimitive_Req:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_multiplexer.sv
+	module worklib.axi_multiplexer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_node.sv
+	module worklib.axi_node:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_request_block.sv
+	module worklib.axi_request_block:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_response_block.sv
+	module worklib.axi_response_block:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_node/axi_RR_Flag_Req.sv
+	module worklib.axi_RR_Flag_Req:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/dummy_mem.sv
+	module worklib.dummy_mem:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/axi_mem_if_SP.sv
+	module worklib.axi_mem_if_SP:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/axi_mem_if_SP_async.sv
+	module worklib.axi_mem_if_SP_async:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/axi_read_only_ctrl.sv
+	module worklib.axi_read_only_ctrl:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi_mem_if_DP/axi_write_only_ctrl.sv
+	module worklib.axi_write_only_ctrl:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi2apb/axi2apb32.sv
+	module worklib.axi2apb32:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/axi2apb/axi2apb.sv
+	module worklib.axi2apb:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/axi/core2axi/core2axi.sv
+	module worklib.core2axi:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_node/apb_node.sv
+	module worklib.apb_node:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_node/apb_node_wrap.sv
+	module worklib.apb_node_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/apb_uart.sv
+	interface worklib.OPENOCD_JTAG:sv
+		errors: 0, warnings: 0
+	module worklib.apb_uart_sv:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/uart_interrupt.sv
+	module worklib.uart_interrupt:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/uart_rx.sv
+	module worklib.uart_rx:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/uart_tx.sv
+	module worklib.uart_tx:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/io_generic_fifo.sv
+	module worklib.io_generic_fifo:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_uart_sv/openocd_bitbang.sv
+	module worklib.openocd_bitbang:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_timer/apb_timer.sv
+	module worklib.apb_timer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_timer/timer.sv
+	module worklib.timer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_i2c/apb_i2c.sv
+	module worklib.apb_i2c:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_i2c/i2c_master_bit_ctrl.sv
+	module worklib.i2c_master_bit_ctrl:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_i2c/i2c_master_byte_ctrl.sv
+	module worklib.i2c_master_byte_ctrl:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_event_unit/apb_event_unit.sv
+`define REGS_MAX_ADR				'd2
+                    				   |
+xmvlog: *W,MACRDF (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_event_unit/include/defines_event_unit.sv,31|27): text macro 'REGS_MAX_ADR' redefined - replaced with new definition, Previous definition was found here ('/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_timer/apb_timer.sv',11|20 ).
+	module worklib.apb_event_unit:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_event_unit/generic_service_unit.sv
+	module worklib.generic_service_unit:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_event_unit/sleep_unit.sv
+	module worklib.sleep_unit:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_fll_if/apb_fll_if.sv
+	module worklib.apb_fll_if:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_pulpino/apb_pulpino.sv
+`define REG_STATUS       4'b0101
+                                |
+xmvlog: *W,MACRDF (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_pulpino/apb_pulpino.sv,16|32): text macro 'REG_STATUS' redefined - replaced with new definition, Previous definition was found here ('/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_i2c/apb_i2c.sv',16|18 ).
+	module worklib.apb_pulpino:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_gpio/apb_gpio.sv
+	module worklib.apb_gpio:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_spi_master/apb_spi_master.sv
+	module worklib.apb_spi_master:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_spi_master/spi_master_apb_if.sv
+`define REG_STATUS 4'b0000 // BASEREG + 0x00
+                                            |
+xmvlog: *W,MACRDF (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_spi_master/spi_master_apb_if.sv,13|44): text macro 'REG_STATUS' redefined - replaced with new definition, Previous definition was found here ('/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb_pulpino/apb_pulpino.sv',16|18 ).
+	module worklib.spi_master_apb_if:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/apb/apb2per/apb2per.sv
+	module worklib.apb2per:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/fpnew/src/fpnew_pkg.sv
+	package worklib.fpnew_pkg:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/include/riscv_defines.sv
+	package worklib.riscv_defines:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/mul/rtl/riscv_mult.sv
+	module worklib.riscv_mult:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_pkg.sv
+	package worklib.dm:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_wrap.v
+	interface worklib.APB_BUS:sv
+		errors: 0, warnings: 0
+	module worklib.dm_wrap:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_csrs.sv
+	module worklib.dm_csrs:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_mem.sv
+	module worklib.dm_mem:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_sba.sv
+	module worklib.dm_sba:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dm_top.sv
+	module worklib.dm_top:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dmi_cdc.sv
+	module worklib.dmi_cdc:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dmi_jtag.sv
+	module worklib.dmi_jtag:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/src/dmi_jtag_tap.sv
+	module worklib.dmi_jtag_tap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-dbg/debug_rom/debug_rom.sv
+	module worklib.debug_rom:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/common_cells/src/cdc_2phase.sv
+	module worklib.cdc_2phase:sv
+		errors: 0, warnings: 0
+	module worklib.cdc_2phase_src:sv
+		errors: 0, warnings: 0
+	module worklib.cdc_2phase_dst:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/common_cells/src/deprecated/fifo_v2.sv
+	module worklib.fifo_v2:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/common_cells/src/fifo_v3.sv
+	module worklib.fifo_v3:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/interco/RTL/lint_2_axi.sv
+	module worklib.lint_2_axi:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/include/apu_core_package.sv
+	package worklib.apu_core_package:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/include/apu_macros.sv
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/include/riscv_tracer_defines.sv
+	package worklib.riscv_tracer_defines:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/register_file_test_wrap.sv
+	module worklib.register_file_test_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_L0_buffer.sv
+	module worklib.riscv_L0_buffer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_L0_buffer_sampled.sv
+	module worklib.riscv_L0_buffer_sampled:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_alu.sv
+	module worklib.riscv_alu:sv
+		errors: 0, warnings: 0
+	module worklib.alu_ff:sv
+		errors: 0, warnings: 0
+	module worklib.alu_popcnt:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_alu_basic.sv
+	module worklib.riscv_alu_basic:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_alu_div.sv
+	module worklib.riscv_alu_div:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_apu_disp.sv
+	module worklib.riscv_apu_disp:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_compressed_decoder.sv
+	module worklib.riscv_compressed_decoder:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_controller.sv
+	module worklib.riscv_controller:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_core.sv
+	module worklib.riscv_core:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_cs_registers.sv
+	module worklib.riscv_cs_registers:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_debug_unit.sv
+	module worklib.riscv_debug_unit:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_ex_stage.sv
+	module worklib.riscv_ex_stage:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_fetch_fifo.sv
+	module worklib.riscv_fetch_fifo:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_hwloop_controller.sv
+	module worklib.riscv_hwloop_controller:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_hwloop_regs.sv
+	module worklib.riscv_hwloop_regs:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_id_stage.sv
+	module worklib.riscv_id_stage:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_if_stage.sv
+	module worklib.riscv_if_stage:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_int_controller.sv
+	module worklib.riscv_int_controller:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_load_store_unit.sv
+	module worklib.riscv_load_store_unit:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_pmp.sv
+	module worklib.riscv_pmp:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_prefetch_L0_buffer.sv
+	module worklib.riscv_prefetch_L0_buffer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_prefetch_buffer.sv
+	module worklib.riscv_prefetch_buffer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/hamsa_L0_cache.sv
+	module worklib.hamsa_L0_cache:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/hamsa_prefetch.sv
+	module worklib.hamsa_prefetch:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_register_file.sv
+	module worklib.riscv_register_file:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_tracer.sv
+	module worklib.riscv_tracer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/riscv_decoder.sv
+	module worklib.riscv_decoder:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/issue2.sv
+	module worklib.issue2:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/issue2_allocator.sv
+	module worklib.issue2_allocator:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/issue2_fetch_alloc_mini_decode.sv
+	module worklib.issue2_fetch_alloc_mini_decode:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/issue2_fetcher.sv
+	module worklib.issue2_fetcher:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/di_interfaces/di_ctrl_interface.sv
+	interface worklib.di_ctrl_interface:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/di_interfaces/di_ifstage_interface.sv
+	interface worklib.di_ifstage_interface:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/di_interfaces/di_pfb_interface.sv
+	interface worklib.di_pfb_interface:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/di_interfaces/di_reg_xfw_interface.sv
+	interface worklib.di_reg_xfw_interface:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/dual_issue/di_interfaces/di_regfile_interface.sv
+	interface worklib.di_regfile_interface:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/axi_mem_if_SP_wrap.sv
+	module worklib.axi_mem_if_SP_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/axi_mem_if_SP_async_wrap.sv
+	module worklib.axi_mem_if_SP_async_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/axi_slice_wrap.sv
+	module worklib.axi_slice_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/core2axi_wrap.sv
+	module worklib.core2axi_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/core_region.sv
+	module worklib.core_region:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/instr_ram_wrap.sv
+	module worklib.instr_ram_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/ram_mux.sv
+	module worklib.ram_mux:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/inst_narrower.v
+	module worklib.inst_narrower:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/common_cells/src/rr_arb_tree.sv
+	module worklib.rr_arb_tree:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/data/data_cache_datapath.sv
+	module worklib.data_cache_datapath:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/data/data_cache_L0.sv
+	module worklib.data_cache_L0:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/instr/instr_cache_datapath.sv
+	module worklib.instr_cache_datapath:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/instr/instr_cache_L0.sv
+	module worklib.instr_cache_L0:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/cache_algo.sv
+	module worklib.cache_algo:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv/rtl/cache_L0/cache_LRU.sv
+	module worklib.cache_LRU:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xcore_region.sv
+	module worklib.Xcore_region:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xissue2.sv
+	module worklib.Xissue2:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xregister_file_test_wrap.sv
+	module worklib.Xregister_file_test_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_controller.sv
+	module worklib.Xriscv_controller:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_core.sv
+	module worklib.Xriscv_core:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_id_stage.sv
+	module worklib.Xriscv_id_stage:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_register_file.sv
+	module worklib.Xriscv_register_file:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_register_file_MPSCM_wrap.sv
+	module worklib.Xriscv_register_file_MPSCM_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xriscv_register_file_mux.sv
+	module worklib.Xriscv_register_file_mux:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/Xram_mux.sv
+	module worklib.Xram_mux:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/mpscm_model.v
+	module worklib.mpscm:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/riscv-exp/rtl/mpscm_model_wrap.v
+	module worklib.mpscm16_32x32_WP_3_RP_5:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_clkgen.v
+	module worklib.spi_clkgen:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_cntif.v
+	module worklib.spi_cntif:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_core.v
+	module worklib.spi_core:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_machine.v
+	module worklib.spi_machine:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_sfi_mm.v
+	module worklib.spi_sfi_mm:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_shifter.v
+	module worklib.spi_shifter:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_sync.v
+	module worklib.spi_sync:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi.v
+	module worklib.spi:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/spi/hdl/spi_top.v
+	module worklib.spi_top:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/axi2cbus/hdl/axi2cbus_top.v
+	module worklib.axi2cbus_top:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/axi2cbus/hdl/axi_slv_if.v
+	module worklib.axi_slv_if:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/axi2cbus/hdl/cbus_slv_if.v
+	module worklib.cbus_slv_if:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_an2.v
+	module worklib.crg_clk_an2:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_clockgate.v
+	module worklib.crg_clk_clockgate:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_inv.v
+	module worklib.crg_clk_inv:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_mx2.v
+	module worklib.crg_clk_mx2:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_xor2.v
+	module worklib.crg_clk_xor2:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_tieoff.v
+	module worklib.crg_tieoff:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_glitch_free_mux.v
+	module worklib.crg_glitch_free_mux:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_nand2.v
+	module worklib.crg_clk_nand2:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_reset_sync.v
+	module worklib.crg_reset_sync:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_sync2_arst.v
+	module worklib.crg_sync2_arst:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_sync2.v
+	module worklib.crg_sync2:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_sync2n_arst.v
+	module worklib.crg_sync2n_arst:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/sc_fifo.v
+	module worklib.sc_fifo:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/intc.v
+	module worklib.intc:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/hdl/gp_dma_arb.v
+	module worklib.gp_dma_arb:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/hdl/gp_dma_fifo.v
+	module worklib.gp_dma_fifo:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/hdl/gp_dma_regs.v
+	module worklib.gp_dma_regs:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/hdl/gp_dma.v
+	module worklib.gp_dma:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/gp_dma/hdl/gp_dma_top.v
+	module worklib.gp_dma_top:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/apb2cbus.v
+	module worklib.apb2cbus:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/generic_clk_div.v
+	module worklib.generic_clk_div:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/generic_fifo_crgn.v
+	module worklib.generic_fifo_crgn:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/generic_fifo_env_2prf_a128d32.v
+	module worklib.generic_fifo_env_2prf_a128d32:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/soc_building_blocks/hdl/generic_fifo_env_2prf_a256d24.v
+	module worklib.generic_fifo_env_2prf_a256d24:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_bscan_cell.v
+	module worklib.crg_bscan_cell:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_chip_jtag.v
+	module worklib.crg_chip_jtag:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_buf.v
+	module worklib.crg_clk_buf:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_clockgate_cust.v
+	module worklib.crg_clk_clockgate_cust:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_mx4.v
+	module worklib.crg_clk_mx4:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_nor2.v
+	module worklib.crg_clk_nor2:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_clk_or2.v
+	module worklib.crg_clk_or2:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_ff_arst.v
+	module worklib.crg_ff_arst:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_lat.v
+	module worklib.crg_lat:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_mx3.v
+	module worklib.crg_mx3:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_mx4.v
+	module worklib.crg_mx4:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_cells/hdl/crg_scan_ff.v
+	module worklib.crg_scan_ff:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_reset_cross.v
+	module worklib.crg_reset_cross:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/dw_sync/hdl/crg_sync2_arst_bus.v
+	module worklib.crg_sync2_arst_bus:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/cbus2axi/hdl/axi_mstr_if.v
+	module worklib.axi_mstr_if:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/cbus2axi/hdl/cbus2axi_top.v
+	module worklib.cbus2axi_top:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/crg_legacy/design/cbus2axi/hdl/cbus_mstr_if.v
+	module worklib.cbus_mstr_if:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/src/axi_pkg.sv
+	package worklib.axi_pkg:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/src/axi_intf.sv
+	interface worklib.AXI_BUS_INTF:sv
+		errors: 0, warnings: 0
+	interface worklib.AXI_BUS_DV:sv
+		errors: 0, warnings: 0
+	interface worklib.AXI_BUS_ASYNC:sv
+		errors: 0, warnings: 0
+	interface worklib.AXI_BUS_ASYNC_GRAY:sv
+		errors: 0, warnings: 0
+	interface worklib.AXI_LITE:sv
+		errors: 0, warnings: 0
+	interface worklib.AXI_LITE_DV:sv
+		errors: 0, warnings: 0
+	interface worklib.AXI_LITE_ASYNC_GRAY:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/src/axi_mux.sv
+	module worklib.axi_mux:sv
+		errors: 0, warnings: 0
+	module worklib.axi_mux_intf:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/src/axi_id_prepend.sv
+  aw_id   : assert final(
+                       |
+xmvlog: *W,DEFFIN (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi/src/axi_id_prepend.sv,123|23): Usage of reserved word "final" in a deferred assertion is not supported.
+	module worklib.axi_id_prepend:sv
+		errors: 0, warnings: 1
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/top/icache_hier_top.sv
+	module worklib.icache_hier_top:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1_cache/pri_icache_controller.sv
+	module worklib.pri_icache_controller:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1_cache/pri_icache.sv
+	module worklib.pri_icache:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1_cache/register_file_1w_multi_port_read.sv
+	module worklib.register_file_1w_multi_port_read:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1_cache/register_file_1w_multi_port_read_test_wrap.sv
+	module worklib.register_file_1w_multi_port_read_test_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1_cache/refill_arbiter.sv
+	module worklib.refill_arbiter:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/AXI4_REFILL_Resp_Deserializer.sv
+	module worklib.AXI4_REFILL_Resp_Deserializer:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/share_icache.sv
+	module worklib.share_icache:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/share_icache_controller.sv
+	module worklib.share_icache_controller:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/RefillTracker_4.sv
+	module worklib.RefillTracker_4:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/REP_buffer_4.sv
+	module worklib.REP_buffer_4:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/ram_ws_rs_data_scm.sv
+	module worklib.ram_ws_rs_data_scm:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/l1.5_cache/ram_ws_rs_tag_scm.sv
+	module worklib.ram_ws_rs_tag_scm:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/src/lfsr_8bit.sv
+	module worklib.lfsr_8bit:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/src/onehot_to_bin.sv
+	module worklib.onehot_to_bin:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/src/cf_math_pkg.sv
+	package worklib.cf_math_pkg:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/src/lzc.sv
+	module worklib.lzc:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/common_cells/src/spill_register.sv
+	module worklib.spill_register:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/tech_cells_generic/src/deprecated/cluster_clk_cells.sv
+	module worklib.cluster_clock_and2:sv
+		errors: 0, warnings: 0
+	module worklib.cluster_clock_buffer:sv
+		errors: 0, warnings: 0
+	module worklib.cluster_clock_gating:sv
+		errors: 0, warnings: 0
+	module worklib.cluster_clock_inverter:sv
+		errors: 0, warnings: 0
+	module worklib.cluster_clock_mux2:sv
+		errors: 0, warnings: 0
+	module worklib.cluster_clock_xor2:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/tech_cells_generic/src/rtl/tc_clk.sv
+	module worklib.tc_clk_and2:sv
+		errors: 0, warnings: 0
+	module worklib.tc_clk_buffer:sv
+		errors: 0, warnings: 0
+	module worklib.tc_clk_gating:sv
+		errors: 0, warnings: 0
+	module worklib.tc_clk_inverter:sv
+		errors: 0, warnings: 0
+	module worklib.tc_clk_mux2:sv
+		errors: 0, warnings: 0
+	module worklib.tc_clk_xor2:sv
+		errors: 0, warnings: 0
+	module worklib.tc_clk_delay:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/DistributedArbitrationNetwork_Req_icache_intc.sv
+	module worklib.DistributedArbitrationNetwork_Req_icache_intc:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/DistributedArbitrationNetwork_Resp_icache_intc.sv
+	module worklib.DistributedArbitrationNetwork_Resp_icache_intc:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/icache_intc.sv
+	module worklib.icache_intc:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/Req_Arb_Node_icache_intc.sv
+	module worklib.Req_Arb_Node_icache_intc:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/Resp_Arb_Node_icache_intc.sv
+	module worklib.Resp_Arb_Node_icache_intc:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/RoutingBlock_Req_icache_intc.sv
+	module worklib.RoutingBlock_Req_icache_intc:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/RoutingBlock_2ch_Req_icache_intc.sv
+	module worklib.RoutingBlock_2ch_Req_icache_intc:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/RoutingBlock_Resp_icache_intc.sv
+	module worklib.RoutingBlock_Resp_icache_intc:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/icache_intc/lint_mux.sv
+	module worklib.lint_mux:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/scm/latch_scm/register_file_1r_1w_test_wrap.sv
+	module worklib.register_file_1r_1w_test_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/scm/latch_scm/register_file_1r_1w.sv
+	module worklib.register_file_1r_1w:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/pulp_interfaces.sv
+	interface worklib.PRI_ICACHE_CTRL_UNIT_BUS:sv
+		errors: 0, warnings: 0
+	interface worklib.SP_ICACHE_CTRL_UNIT_BUS:sv
+		errors: 0, warnings: 0
+	interface worklib.MP_ICACHE_CTRL_UNIT_BUS:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi_intf_to_bus_bridge.sv
+	module worklib.axi_intf_to_bus_bridge:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/axi_arbiter_fixed.sv
+	module worklib.axi_arbiter_fixed:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/msystem.sv
+	module worklib.msystem:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/includes/remote_access_intrfc.sv
+	interface worklib.REMOTE_ACCESS_INTRFC:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/sp_ram_wrap.sv
+	module worklib.sp_ram_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/arm_modular_128x4096_sram_hs.sv
+	module worklib.arm_modular_128x4096_sram_hs:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/arm_modular_128x4096_sram_hd.sv
+	module worklib.arm_modular_128x4096_sram_hd:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram16384X32_bank_i.v
+	module worklib.sp_sram16384X32_bank_i:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram2048X128_wbp_bank_i.v
+	module worklib.sp_sram2048X128_wbp_bank_i:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram2048X128_bank_i.v
+	module worklib.sp_sram2048X128_bank_i:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram4096X128_bank_i.v
+	module worklib.sp_sram4096X128_bank_i:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram8192X32_bank_i.v
+	module worklib.sp_sram8192X32_bank_i:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mem_wrappers/sp_sram1024X8_i.v
+	module worklib.sp_sram1024X8_i:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/spram.v
+	module worklib.spram:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta1024x8m4s_120a.v
+	module worklib.TS1N16FFCLLULVTA1024X8M4S:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta16384x32m16sw_120a.v
+	module worklib.TS1N16FFCLLULVTA16384X32M16SW:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta2048x128m4sw_120a.v
+	module worklib.TS1N16FFCLLULVTA2048X128M4SW:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta2048x32m4sw_120a.v
+	module worklib.TS1N16FFCLLULVTA2048X32M4SW:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta4096x128m4sw_120a.v
+	module worklib.TS1N16FFCLLULVTA4096X128M4SW:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta8192x32m16sw_120a.v
+	module worklib.TS1N16FFCLLULVTA8192X32M16SW:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta8192x32m8sw_120a.v
+	module worklib.TS1N16FFCLLULVTA8192X32M8SW:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc16/ts1n16ffcllulvta2048x32m8sw_120a.v
+	module worklib.TS1N16FFCLLULVTA2048X32M8SW:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc65/hd/ARM_SPSRAM_32X8192_M16_MEM.v
+	module worklib.ARM_SPSRAM_32X8192_M16_MEM:v
+		errors: 0, warnings: 0
+	module worklib.ARM_SPSRAM_32X8192_M16_MEM_error_injection:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc65/hs/ARM_SPSRAM_128X2048_M4_MEM.v
+	module worklib.ARM_SPSRAM_128X2048_M4_MEM:v
+		errors: 0, warnings: 0
+	module worklib.ARM_SPSRAM_128X2048_M4_MEM_error_injection:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc65/hs/ARM_SPSRAM_64X4096_M8_MEM.v
+	module worklib.ARM_SPSRAM_64X4096_M8_MEM:v
+		errors: 0, warnings: 0
+	module worklib.ARM_SPSRAM_64X4096_M8_MEM_error_injection:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/mems/tsmc65/hd/ARM_SPSRAM_32X16384_M16_MEM.v
+	module worklib.ARM_SPSRAM_32X16384_M16_MEM:v
+		errors: 0, warnings: 0
+	module worklib.ARM_SPSRAM_32X16384_M16_MEM_error_injection:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/axi2apb_wrap.sv
+	module worklib.axi2apb_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/axi_node_intf_wrap.sv
+	module worklib.axi_node_intf_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/axi_spi_slave_wrap.sv
+	module worklib.axi_spi_slave_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/boot_code.sv
+	module worklib.boot_code:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/boot_rom_wrap.sv
+	module worklib.boot_rom_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/clk_rst_gen.sv
+	module worklib.clk_rst_gen:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/periph_bus_wrap.sv
+	module worklib.periph_bus_wrap:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/peripherals.sv
+	module worklib.peripherals:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_gating.sv
+module cluster_clock_gating
+                          |
+xmvlog: *W,RECOME (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_gating.sv,11|26): recompiling design unit worklib.cluster_clock_gating:sv.
+	First compiled from line 31 of /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/tech_cells_generic/src/deprecated/cluster_clk_cells.sv.
+xmvlog: *E,DUPUNI: Unit "worklib.cluster_clock_gating:sv" multiply defined in files "/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/tech_cells_generic/src/deprecated/cluster_clk_cells.sv" and "/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_gating.sv".
+xmvlog: *E,MNPDEC: Module name (cluster_clock_gating) previously declared. Use -ALLOWREDEFINITION option for duplicate module names.
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_inverter.sv
+module cluster_clock_inverter
+                            |
+xmvlog: *W,RECOME (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_inverter.sv,11|28): recompiling design unit worklib.cluster_clock_inverter:sv.
+	First compiled from line 48 of /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/tech_cells_generic/src/deprecated/cluster_clk_cells.sv.
+xmvlog: *E,DUPUNI: Unit "worklib.cluster_clock_inverter:sv" multiply defined in files "/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/tech_cells_generic/src/deprecated/cluster_clk_cells.sv" and "/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_inverter.sv".
+xmvlog: *E,MNPDEC: Module name (cluster_clock_inverter) previously declared. Use -ALLOWREDEFINITION option for duplicate module names.
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_mux2.sv
+module cluster_clock_mux2
+                        |
+xmvlog: *W,RECOME (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_mux2.sv,11|24): recompiling design unit worklib.cluster_clock_mux2:sv.
+	First compiled from line 57 of /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/tech_cells_generic/src/deprecated/cluster_clk_cells.sv.
+xmvlog: *E,DUPUNI: Unit "worklib.cluster_clock_mux2:sv" multiply defined in files "/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/hier_icache/rtl/tech_cells_generic/src/deprecated/cluster_clk_cells.sv" and "/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/cluster_clock_mux2.sv".
+xmvlog: *E,MNPDEC: Module name (cluster_clock_mux2) previously declared. Use -ALLOWREDEFINITION option for duplicate module names.
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/generic_fifo.sv
+	module worklib.generic_fifo:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/pulp_clock_inverter.sv
+	module worklib.pulp_clock_inverter:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/pulp_clock_mux2.sv
+	module worklib.pulp_clock_mux2:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/rstgen.sv
+	module worklib.rstgen:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/soc/components/sp_ram.sv
+	module worklib.sp_ram:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox.sv
+	module worklib.xbox:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_mfarm.sv
+	module worklib.xbox_mfarm:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xfarm.sv
+	module worklib.xbox_xfarm:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_aa.sv
+   if (!rst_n) current_state <= 0 ;  // Reset
+                                |
+xmvlog: *W,ENUMERR (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_aa.sv,235|32): This assignment is a violation of SystemVerilog strong typing rules for enumeration datatypes.
+        mem_access_state  <= 0 ;
+                             |
+xmvlog: *W,ENUMERR (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_aa.sv,296|29): This assignment is a violation of SystemVerilog strong typing rules for enumeration datatypes.
+        mem_rdata_state   <= 0 ;
+                             |
+xmvlog: *W,ENUMERR (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_aa.sv,297|29): This assignment is a violation of SystemVerilog strong typing rules for enumeration datatypes.
+            xlrtr_cmd     <= from_mem[MEM1].rdata[0] ;           
+                                                |
+xmvlog: *W,ENUMERR (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_aa.sv,312|48): This assignment is a violation of SystemVerilog strong typing rules for enumeration datatypes.
+	module worklib.xbox_xlr_aa:sv
+		errors: 0, warnings: 4
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_dmy1.sv
+	module worklib.xbox_xlr_dmy1:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_dmy2.sv
+	module worklib.xbox_xlr_dmy2:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/xbox/xbox_xlr_dmy3.sv
+	module worklib.xbox_xlr_dmy3:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_addr_cmd.v
+	module worklib.alt_mem_ddrx_addr_cmd:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_addr_cmd_wrap.v
+	module worklib.alt_mem_ddrx_addr_cmd_wrap:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_arbiter.v
+	module worklib.alt_mem_ddrx_arbiter:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_buffer_manager.v
+	module worklib.alt_mem_ddrx_buffer_manager:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_buffer.v
+	module worklib.alt_mem_ddrx_buffer:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_burst_gen.v
+	module worklib.alt_mem_ddrx_burst_gen:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_burst_tracking.v
+	module worklib.alt_mem_ddrx_burst_tracking:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_cmd_gen.v
+	module worklib.alt_mem_ddrx_cmd_gen:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_controller_st_top.v
+	module worklib.alt_mem_ddrx_controller_st_top:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_controller.v
+	module worklib.alt_mem_ddrx_controller:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_csr.v
+	module worklib.alt_mem_ddrx_csr:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_dataid_manager.v
+	module worklib.alt_mem_ddrx_dataid_manager:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ddr2_odt_gen.v
+	module worklib.alt_mem_ddrx_ddr2_odt_gen:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ddr3_odt_gen.v
+	module worklib.alt_mem_ddrx_ddr3_odt_gen:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_decoder_32_syn.v
+	module worklib.alt_mem_ddrx_ecc_decoder_32_decode:v
+		errors: 0, warnings: 0
+	module worklib.alt_mem_ddrx_ecc_decoder_32_altecc_decoder:v
+		errors: 0, warnings: 0
+	module worklib.alt_mem_ddrx_ecc_decoder_32:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_decoder_64_syn.v
+	module worklib.alt_mem_ddrx_ecc_decoder_64_decode:v
+		errors: 0, warnings: 0
+	module worklib.alt_mem_ddrx_ecc_decoder_64_altecc_decoder:v
+		errors: 0, warnings: 0
+	module worklib.alt_mem_ddrx_ecc_decoder_64:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_decoder.v
+	module worklib.alt_mem_ddrx_ecc_decoder:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_encoder_32_syn.v
+	module worklib.alt_mem_ddrx_ecc_encoder_32_altecc_encoder:v
+		errors: 0, warnings: 0
+	module worklib.alt_mem_ddrx_ecc_encoder_32:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_encoder_64_syn.v
+	module worklib.alt_mem_ddrx_ecc_encoder_64_altecc_encoder:v
+		errors: 0, warnings: 0
+	module worklib.alt_mem_ddrx_ecc_encoder_64:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_encoder_decoder_wrapper.v
+	module worklib.alt_mem_ddrx_ecc_encoder_decoder_wrapper:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_ecc_encoder.v
+	module worklib.alt_mem_ddrx_ecc_encoder:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_fifo.v
+	module worklib.alt_mem_ddrx_fifo:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_input_if.v
+	module worklib.alt_mem_ddrx_input_if:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_list.v
+	module worklib.alt_mem_ddrx_list:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_lpddr2_addr_cmd.v
+	module worklib.alt_mem_ddrx_lpddr2_addr_cmd:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_mm_st_converter.v
+	module worklib.alt_mem_ddrx_mm_st_converter:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_odt_gen.v
+	module worklib.alt_mem_ddrx_odt_gen:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_rank_timer.v
+	module worklib.alt_mem_ddrx_rank_timer:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_rdata_path.v
+	module worklib.alt_mem_ddrx_rdata_path:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_rdwr_data_tmg.v
+	module worklib.alt_mem_ddrx_rdwr_data_tmg:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_sideband.v
+	module worklib.alt_mem_ddrx_sideband:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_tbp.v
+	module worklib.alt_mem_ddrx_tbp:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_timing_param.v
+	module worklib.alt_mem_ddrx_timing_param:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_wdata_path.v
+			assign wdatap_datawrite_allzeros_be = (!cfg_enable_no_dm & &be_all_zeros) ? 1'b1 : 1'b0;
+			                                                           |
+xmvlog: *W,DUPBWA (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_ddrx_wdata_path.v,677|62): error prone bit-wise AND ('&') sequence detected [4.1.11(IEEE)].
+	module worklib.alt_mem_ddrx_wdata_path:v
+		errors: 0, warnings: 1
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/alt_mem_phy_defines.v
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_alt_mem_ddrx_controller_top.v
+	module worklib.ddr2_64bit_alt_mem_ddrx_controller_top:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_controller_phy.v
+	module worklib.ddr2_64bit_controller_phy:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_phy.v
+	module worklib.ddr2_64bit_phy:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit.v
+	module worklib.ddr2_64bit:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_phy_alt_mem_phy_seq_wrapper.v
+	module worklib.ddr2_64bit_phy_alt_mem_phy_seq_wrapper:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_phy_alt_mem_phy.v
+	module worklib.ddr2_64bit_phy_alt_mem_phy:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_clk_reset:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_ac:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_addr_cmd:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_dp_io:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_read_dp:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_write_dp_fr:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_rdata_valid:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_mux:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_mimic:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_mimic_debug:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_phy_alt_mem_phy_reset_pipe:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_phy_alt_mem_phy_pll.v
+	module worklib.ddr2_64bit_phy_alt_mem_phy_pll:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/altera_primitives.v
+	module worklib.carry:v
+		errors: 0, warnings: 0
+	module worklib.cascade:v
+		errors: 0, warnings: 0
+	module worklib.carry_sum:v
+		errors: 0, warnings: 0
+	module worklib.exp:v
+		errors: 0, warnings: 0
+	module worklib.opndrn:v
+		errors: 0, warnings: 0
+	module worklib.row_global:v
+		errors: 0, warnings: 0
+	module worklib.TRI:v
+		errors: 0, warnings: 0
+	module worklib.lut_input:v
+		errors: 0, warnings: 0
+	module worklib.lut_output:v
+		errors: 0, warnings: 0
+	module worklib.latch:v
+		errors: 0, warnings: 0
+	module worklib.dlatch:v
+		errors: 0, warnings: 0
+	module worklib.prim_gdff:v
+		errors: 0, warnings: 0
+	module worklib.dff:v
+		errors: 0, warnings: 0
+	module worklib.dffe:v
+		errors: 0, warnings: 0
+	module worklib.dffea:v
+		errors: 0, warnings: 0
+	module worklib.dffeas:v
+		errors: 0, warnings: 0
+	module worklib.prim_gtff:v
+		errors: 0, warnings: 0
+	module worklib.tff:v
+		errors: 0, warnings: 0
+	module worklib.tffe:v
+		errors: 0, warnings: 0
+	module worklib.prim_gjkff:v
+		errors: 0, warnings: 0
+	module worklib.jkff:v
+		errors: 0, warnings: 0
+	module worklib.jkffe:v
+		errors: 0, warnings: 0
+	module worklib.prim_gsrff:v
+		errors: 0, warnings: 0
+	module worklib.srff:v
+		errors: 0, warnings: 0
+	module worklib.srffe:v
+		errors: 0, warnings: 0
+	module worklib.clklock:v
+		errors: 0, warnings: 0
+	module worklib.alt_inbuf:v
+		errors: 0, warnings: 0
+	module worklib.alt_outbuf:v
+		errors: 0, warnings: 0
+	module worklib.alt_outbuf_tri:v
+		errors: 0, warnings: 0
+	module worklib.alt_iobuf:v
+		errors: 0, warnings: 0
+	module worklib.alt_inbuf_diff:v
+		errors: 0, warnings: 0
+	module worklib.alt_outbuf_diff:v
+		errors: 0, warnings: 0
+	module worklib.alt_outbuf_tri_diff:v
+		errors: 0, warnings: 0
+	module worklib.alt_iobuf_diff:v
+		errors: 0, warnings: 0
+	module worklib.alt_bidir_diff:v
+		errors: 0, warnings: 0
+	module worklib.alt_bidir_buf:v
+		errors: 0, warnings: 0
+	primitive worklib.PRIM_GDFF_LOW:v
+		errors: 0, warnings: 0
+	primitive worklib.PRIM_GDFF_HIGH:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/cycloneiii_atoms.v
+	primitive worklib.CYCLONEIII_PRIM_DFFE:v
+		errors: 0, warnings: 0
+	primitive worklib.CYCLONEIII_PRIM_DFFEAS:v
+		errors: 0, warnings: 0
+	primitive worklib.CYCLONEIII_PRIM_DFFEAS_HIGH:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_dffe:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_mux21:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_mux41:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_and1:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_and16:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_bmux21:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_b17mux21:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_nmux21:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_b5mux21:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_latch:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_routing_wire:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_m_cntr:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_n_cntr:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_scale_cntr:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_pll_reg:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_pll:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_lcell_comb:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_ff:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_ram_pulse_generator:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_ram_register:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_ram_block:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_mac_data_reg:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_mac_sign_reg:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_mac_mult_internal:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_mac_mult:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_mac_out:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_io_ibuf:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_io_obuf:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_ddio_out:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_ddio_oe:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_pseudo_diff_out:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_io_pad:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_ena_reg:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_clkctrl:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_rublock:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_apfcontroller:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_termination_ctrl:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_termination_rupdn:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_termination:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_jtag:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_crcblock:v
+		errors: 0, warnings: 0
+	module worklib.cycloneiii_oscillator:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/src/ddr2_read_write.v
+	module worklib.ddr2_read_write:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/src/sim_psd_ddr_intrfc.v
+	module worklib.sim_psd_ddr_intrfc:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/src/ddr2_sodimm.v
+	module worklib.ddr2_sodimm:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga/faked_fast_sim_altpll.v
+	module worklib.faked_fast_sim_altpll:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga/vqm_msystem_wrap.v
+	module worklib.vqm_msystem_wrap:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga/fpgnix_gpp.sv
+	module worklib.fpgnix_gpp:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/pulpenix/src/fpga/fpgnix_hir.sv
+	module worklib.fpgnix:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/fpgnix_tb.v
+	module worklib.fpgnix_tb:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/smart_uart_tb_non_r2d2.sv
+         $sscanf(numBytesStr, "%d", numBytes);
+               |
+xmvlog: *W,NOSYST (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/smart_uart_tb_non_r2d2.sv,540|15): System function '$sscanf' invoked as a task. Return value will be ignored.
+         $sscanf(numBytesStr, "%d", numBytes);
+               |
+xmvlog: *W,NOSYST (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/smart_uart_tb_non_r2d2.sv,626|15): System function '$sscanf' invoked as a task. Return value will be ignored.
+         $sscanf(bufAddrStr, "%h", bufAddr);       
+               |
+xmvlog: *W,NOSYST (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/smart_uart_tb_non_r2d2.sv,629|15): System function '$sscanf' invoked as a task. Return value will be ignored.
+                     $ungetc(test_next_char,fgetHexF_file_ptr) ; // push back to stream the test char.
+                           |
+xmvlog: *W,NOSYST (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/smart_uart_tb_non_r2d2.sv,660|27): System function '$ungetc' invoked as a task. Return value will be ignored.
+                    end else $ungetc(test_next_char,fgetHexF_file_ptr) ; // push back to stream the test char.
+                                   |
+xmvlog: *W,NOSYST (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/smart_uart_tb_non_r2d2.sv,672|35): System function '$ungetc' invoked as a task. Return value will be ignored.
+         $sscanf(numBytesStr, "%d", numBytes);
+               |
+xmvlog: *W,NOSYST (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/smart_uart_tb_non_r2d2.sv,754|15): System function '$sscanf' invoked as a task. Return value will be ignored.
+         $sscanf(numBytesPerLineStr, "%d", numBytsPerLine);
+               |
+xmvlog: *W,NOSYST (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/smart_uart_tb_non_r2d2.sv,757|15): System function '$sscanf' invoked as a task. Return value will be ignored.
+         $sscanf(bufAddrStr, "%h", bufAddr);       
+               |
+xmvlog: *W,NOSYST (/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/smart_uart_tb_non_r2d2.sv,760|15): System function '$sscanf' invoked as a task. Return value will be ignored.
+	interface worklib.uart_bus:sv
+		errors: 0, warnings: 8
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/py_spi_tb/sv/sock.sv
+	package worklib.sock:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/ddr2_64bit_mem_model.v
+	module worklib.ddr2_64bit_mem_model_ram_module:v
+		errors: 0, warnings: 0
+	module worklib.ddr2_64bit_mem_model:v
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/ddr2_dimm.v
+	module worklib.ddr2_dimm:v
+		errors: 0, warnings: 0
+xmvlog: *W,SPDUSD: Include directory /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/soc/ given but not used.
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 14
+xrun: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
+TOOL:	xrun(64)	23.09-s013: Exiting on Aug 21, 2025 at 12:32:48 UTC  (total: 00:00:06)

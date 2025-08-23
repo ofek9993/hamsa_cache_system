@@ -1,0 +1,15 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-XLMODE
+./xcelium.d/run.lnx8664.23.09.d
+-RUNMODE
+-V93
+/data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/ips/ddr/altera_ddr_64bit/ddr2_64bit_phy_alt_mem_phy_seq.vhd
+-CDSLIB
+./xcelium.d/run.lnx8664.23.09.d/cdsrun.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.23.09.d/hdlrun.var
+-MESSAGES
+-UPDATE

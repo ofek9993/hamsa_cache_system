@@ -1,0 +1,5 @@
+//
+// File created by:  xrun
+// Do not modify this file
+
+s1::(21Aug2025:12:44:53):( irun -unbuffered -sv -v93 -access rw +TB=tb -timescale 1ns/1ps +define+STD_SIM +define+HAMSA_DIX +define+HAMSA_PREFETCH -top fpgnix_tb +define+RTL_SIM +define+FAKED_FAST_SIM_ALTPLL +define+SMART_UART_TB_NON_R2D2 +define+HAMSA_DI +define+ALTERA -f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/altera.f +define+CLK_PERIOD=100 +define+BAUD_RATE=2500000 +define+TRACE_EXECUTION -f /data/project/tsmc65/users/yonatap/ws/ddp23/ddp23_pnx/src/tb/fpgnix_tb.f )
