@@ -16,9 +16,11 @@ setenv DDP23_USER_WS /project/generic/users/$USER/ws
 clone the repository (the command will change the root folder name)
 
 **For RC3 Cloud environment:**
+
 git clone https://github.com/ofek9993/hamsa_cache_system.git ddp23 && rm -rf hamsa_cache_system
 
 **For Enics environment:**
+
 git clone https://github.com/ofek9993/hamsa_cache_system.git ddp23_pulpenix && rm -rf hamsa_cache_system
 
 ```
