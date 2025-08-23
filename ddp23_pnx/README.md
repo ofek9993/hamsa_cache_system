@@ -17,10 +17,7 @@ setenv DDP23_USER_WS /project/generic/users/$USER/ws
 mkdir  $DDP23_USER_WS/ddp23_pulpenix 
 cd  $DDP23_USER_WS/ddp23_pulpenix
 ```
-
-
-[git clone  https://gitlab.com/udik/ddp23_pnx.git  ](https://github.com/ofek9993/hamsa_cache_system.git)
-
+https://github.com/ofek9993/hamsa_cache_system.git
 
 ```
 mkdir sim  
