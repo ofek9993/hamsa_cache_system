@@ -19,11 +19,8 @@ cd  $DDP23_USER_WS/ddp23_pulpenix
 ```
 
 
-git clone  https://gitlab.com/udik/ddp23_pnx.git  
-gitlab username and password might be required  
+[git clone  https://gitlab.com/udik/ddp23_pnx.git  ](https://github.com/ofek9993/hamsa_cache_system.git)
 
-Only in case above clone does not work try this:  
-git clone git@gitlab.com:udik/ddp23_pnx.git  
 
 ```
 mkdir sim  
