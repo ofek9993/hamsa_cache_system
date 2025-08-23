@@ -8,18 +8,27 @@ open a terminal and enter following commands
 # RC3 Cloud environment:
 tsmc65
 export DDP23_USER_WS=/data/project/tsmc65/users/$USER/ws
-mkdir  $DDP23_USER_WS/ddp23 
-cd  $DDP23_USER_WS/ddp23 
 
 # Enics environment (Aplicable only for Enics Labs system users) :
 generic
 setenv DDP23_USER_WS /project/generic/users/$USER/ws
-mkdir  $DDP23_USER_WS/ddp23_pulpenix 
-cd  $DDP23_USER_WS/ddp23_pulpenix
 ```
-git clone https://github.com/ofek9993/hamsa_cache_system.git
+clone the repository (the command will change the root folder name)
+
+**For RC3 Cloud environment:**
+git clone https://github.com/ofek9993/hamsa_cache_system.git ddp23 && rm -rf hamsa_cache_system
+
+**For Enics environment:**
+git clone https://github.com/ofek9993/hamsa_cache_system.git ddp23_pulpenix && rm -rf hamsa_cache_system
 
 ```
+# RC3 Cloud environment:
+cd ddp23
+
+# Enics environment:
+cd ddp23_pulpenix
+
+
 mkdir sim  
  
 Cloud users: Edit ~/.bashrc  
