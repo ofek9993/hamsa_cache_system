@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 
 # ////////////////////////////////////////////////////////////////////////////////
 # // Company:        Multitherman Laboratory @ DEIS - University of Bologna     //
@@ -175,3 +175,4 @@ endmodule""" % (math.log(rom_size, 2)));
 ###############################################################################
 rom_file.close()
 vlog_file.close()
+
