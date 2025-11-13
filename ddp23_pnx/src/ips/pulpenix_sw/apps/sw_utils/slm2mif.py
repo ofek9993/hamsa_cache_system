@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python2.7
 
 import sys
 
@@ -66,4 +66,6 @@ gen_mif_file (sys.argv[2],"app_data32.mif", 1)
 gen_mif_file (sys.argv[2],"app_data128.mif", 4)
  
 #--------------------------------------------------------------------------
+
+
 
