@@ -57,7 +57,7 @@ asm_printf(char *p)
 
 int main(void)
 {
-    char *in = "of3158e21k405";
+    char *in = "ddp2318e21k495";
     char id[32]   = {0};
     char name[32] = {0};
 

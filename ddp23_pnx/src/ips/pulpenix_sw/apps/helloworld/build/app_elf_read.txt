@@ -5,531 +5,316 @@ build/test.elf:     file format elf32-littleriscv
 Disassembly of section .vectors:
 
 00000000 <IRQ0>:
-
-  // external interrupts are handled by the same callback
-  // until compiler supports IRQ routines
-  .org 0x00
-
-  IRQ0:    j IRQ0 //(should never happen)
    0:	0000006f          	j	0 <IRQ0>
 
 00000004 <IRQ1>:
-  IRQ1:    j IRQ1 //(should never happen)
    4:	0000006f          	j	4 <IRQ1>
 
 00000008 <IRQ2>:
-  IRQ2:    j IRQ2 //(should never happen)
    8:	0000006f          	j	8 <IRQ2>
 
 0000000c <IRQ3>:
-  IRQ3:    j IRQ3 //TODO: SW Int
    c:	0000006f          	j	c <IRQ3>
 
 00000010 <IRQ4>:
-  IRQ4:    j IRQ4 //(should never happen)
   10:	0000006f          	j	10 <IRQ4>
 
 00000014 <IRQ5>:
-  IRQ5:    j IRQ5 //(should never happen)
   14:	0000006f          	j	14 <IRQ5>
 
 00000018 <IRQ6>:
-  IRQ6:    j IRQ6 //(should never happen)
   18:	0000006f          	j	18 <IRQ6>
 
 0000001c <IRQ7>:
-  IRQ7:    j ISR_TA_CMP_ASM
   1c:	1bc0006f          	j	1d8 <ISR_TA_CMP_ASM>
 
 00000020 <IRQ8>:
-  IRQ8:    j IRQ8 //(should never happen)
   20:	0000006f          	j	20 <IRQ8>
 
 00000024 <IRQ9>:
-  IRQ9:    j IRQ9 //(should never happen)
   24:	0000006f          	j	24 <IRQ9>
 
 00000028 <IRQ10>:
-  IRQ10:   j IRQ10 //should never happen
   28:	0000006f          	j	28 <IRQ10>
 
 0000002c <IRQ11>:
-  IRQ11:   j IRQ11 //TODO: External int
   2c:	0000006f          	j	2c <IRQ11>
 
 00000030 <IRQ12>:
-  IRQ12:   j IRQ12 //(should never happen)
   30:	0000006f          	j	30 <IRQ12>
 
 00000034 <IRQ13>:
-  IRQ13:   j IRQ13 //(should never happen)
   34:	0000006f          	j	34 <IRQ13>
 
 00000038 <IRQ14>:
-  IRQ14:   j IRQ14 //(should never happen)
   38:	0000006f          	j	38 <IRQ14>
 
 0000003c <IRQ15>:
-  IRQ15:   j IRQ15 //(should never happen)
   3c:	0000006f          	j	3c <IRQ15>
 
 00000040 <IRQ16>:
-
-  IRQ16:   j ISR_I2C_ASM
   40:	1200006f          	j	160 <ISR_I2C_ASM>
 
 00000044 <IRQ17>:
-  IRQ17:   j ISR_UART_ASM
   44:	1340006f          	j	178 <ISR_UART_ASM>
 
 00000048 <IRQ18>:
-  IRQ18:   j ISR_GPIO_ASM
   48:	1480006f          	j	190 <ISR_GPIO_ASM>
 
 0000004c <IRQ19>:
-  IRQ19:   j ISR_SPIM0_ASM
   4c:	15c0006f          	j	1a8 <ISR_SPIM0_ASM>
 
 00000050 <IRQ20>:
-  IRQ20:   j ISR_SPIM1_ASM
   50:	1700006f          	j	1c0 <ISR_SPIM1_ASM>
 
 00000054 <IRQ21>:
-  IRQ21:   j ISR_TA_OVF_ASM
   54:	19c0006f          	j	1f0 <ISR_TA_OVF_ASM>
 
 00000058 <IRQ22>:
-  IRQ22:   j ISR_TB_OVF_ASM
   58:	1c80006f          	j	220 <ISR_TB_OVF_ASM>
 
 0000005c <IRQ23>:
-  IRQ23:   j ISR_TB_CMP_ASM
   5c:	1ac0006f          	j	208 <ISR_TB_CMP_ASM>
 
 00000060 <IRQ24>:
-  IRQ24:   j IRQ24 //TODO: GPP0
   60:	0000006f          	j	60 <IRQ24>
 
 00000064 <IRQ25>:
-  IRQ25:   j IRQ25 //TODO: GPP1
   64:	0000006f          	j	64 <IRQ25>
 
 00000068 <IRQ26>:
-  IRQ26:   j IRQ26 //TODO: GPP2
   68:	0000006f          	j	68 <IRQ26>
 
 0000006c <IRQ27>:
-  IRQ27:   j IRQ27 //TODO: GPP3
   6c:	0000006f          	j	6c <IRQ27>
 
 00000070 <IRQ28>:
-  IRQ28:   j IRQ28 //TODO: GPP4
   70:	0000006f          	j	70 <IRQ28>
 
 00000074 <IRQ29>:
-  IRQ29:   j IRQ29 //TODO: GPP5
   74:	0000006f          	j	74 <IRQ29>
 
 00000078 <IRQ30>:
-  IRQ30:   j IRQ30 //TODO: GPP6
   78:	0000006f          	j	78 <IRQ30>
 
 0000007c <IRQ31>:
-  IRQ31:   j IRQ31 //TODO: GPP7
   7c:	0000006f          	j	7c <IRQ31>
-
-
-
-  // reset vector
-  .org 0x80
-  jal x0, reset_handler
   80:	00c0006f          	j	8c <_stext>
-
-  // illegal instruction exception
-  .org 0x84
-  jal x0, illegal_insn_handler
   84:	1b40006f          	j	238 <illegal_insn_handler>
-
-  // ecall handler
-  .org 0x88
-  jal x0, illegal_insn_handler
   88:	1b00006f          	j	238 <illegal_insn_handler>
 
 Disassembly of section .text:
 
 0000008c <_stext>:
-   csrrwi x0, 2048, 3
   8c:	8001d073          	csrwi	0x800,3
-  mv  x1, x0
   90:	00000093          	li	ra,0
-  mv  x2, x1
   94:	00008113          	mv	sp,ra
-  mv  x3, x1
   98:	00008193          	mv	gp,ra
-  mv  x4, x1
   9c:	00008213          	mv	tp,ra
-  mv  x5, x1
   a0:	00008293          	mv	t0,ra
-  mv  x6, x1
   a4:	00008313          	mv	t1,ra
-  mv  x7, x1
   a8:	00008393          	mv	t2,ra
-  mv  x8, x1
   ac:	00008413          	mv	s0,ra
-  mv  x9, x1
   b0:	00008493          	mv	s1,ra
-  mv x10, x1
   b4:	00008513          	mv	a0,ra
-  mv x11, x1
   b8:	00008593          	mv	a1,ra
-  mv x12, x1
   bc:	00008613          	mv	a2,ra
-  mv x13, x1
   c0:	00008693          	mv	a3,ra
-  mv x14, x1
   c4:	00008713          	mv	a4,ra
-  mv x15, x1
   c8:	00008793          	mv	a5,ra
-  mv x16, x1
   cc:	00008813          	mv	a6,ra
-  mv x17, x1
   d0:	00008893          	mv	a7,ra
-  mv x18, x1
   d4:	00008913          	mv	s2,ra
-  mv x19, x1
   d8:	00008993          	mv	s3,ra
-  mv x20, x1
   dc:	00008a13          	mv	s4,ra
-  mv x21, x1
   e0:	00008a93          	mv	s5,ra
-  mv x22, x1
   e4:	00008b13          	mv	s6,ra
-  mv x23, x1
   e8:	00008b93          	mv	s7,ra
-  mv x24, x1
   ec:	00008c13          	mv	s8,ra
-  mv x25, x1
   f0:	00008c93          	mv	s9,ra
-  mv x26, x1
   f4:	00008d13          	mv	s10,ra
-  mv x27, x1
   f8:	00008d93          	mv	s11,ra
-  mv x28, x1
   fc:	00008e13          	mv	t3,ra
-  mv x29, x1
  100:	00008e93          	mv	t4,ra
-  mv x30, x1
  104:	00008f13          	mv	t5,ra
-  mv x31, x1
  108:	00008f93          	mv	t6,ra
-  la   x2, _stack_start
  10c:	00130117          	auipc	sp,0x130
  110:	ef410113          	addi	sp,sp,-268 # 130000 <_stack_start>
 
 00000114 <_start>:
-  la x26, _bss_start
  114:	00100d17          	auipc	s10,0x100
  118:	1c8d0d13          	addi	s10,s10,456 # 1002dc <_edata>
-  la x27, _bss_end
  11c:	00100d97          	auipc	s11,0x100
  120:	1c0d8d93          	addi	s11,s11,448 # 1002dc <_edata>
-  bge x26, x27, zero_loop_end
  124:	01bd5863          	ble	s11,s10,134 <zero_loop_end>
 
 00000128 <zero_loop>:
-  sw x0, 0(x26)
  128:	000d2023          	sw	zero,0(s10)
-  addi x26, x26, 4
  12c:	004d0d13          	addi	s10,s10,4
-  ble x26, x27, zero_loop
  130:	ffaddce3          	ble	s10,s11,128 <zero_loop>
 
 00000134 <zero_loop_end>:
-  call    __libc_init_array
  134:	218000ef          	jal	ra,34c <__libc_init_array>
 
 00000138 <main_entry>:
-  addi x10, x0, 0
  138:	00000513          	li	a0,0
-  addi x11, x0, DFLT_UART_CLK
  13c:	00300593          	li	a1,3
-  jal uart_set_cfg
  140:	664000ef          	jal	ra,7a4 <uart_set_cfg>
-  jal init_pll_rcg
  144:	019010ef          	jal	ra,195c <init_pll_rcg>
-  addi x10, x0, 0
  148:	00000513          	li	a0,0
-  addi x11, x0, 0
  14c:	00000593          	li	a1,0
-  jal x1, main
  150:	480000ef          	jal	ra,5d0 <main>
-  jal x1, sim_finish // FINISH SIMULATION - Added by Udi, Vslid only for simulation environment.
  154:	7fc010ef          	jal	ra,1950 <sim_finish>
-  jal  uart_wait_tx_done;
  158:	6d8000ef          	jal	ra,830 <uart_wait_tx_done>
-  jal  x1, exit
  15c:	74c000ef          	jal	ra,8a8 <exit>
 
 00000160 <ISR_I2C_ASM>:
-  addi x2, x2, -EXCEPTION_STACK_SIZE
  160:	fa010113          	addi	sp,sp,-96
-  sw x1, 0x5C(x2)
  164:	04112e23          	sw	ra,92(sp)
-  jal x1, store_regs
  168:	0e8000ef          	jal	ra,250 <store_regs>
-  la x1, end_except
  16c:	00000097          	auipc	ra,0x0
  170:	15c08093          	addi	ra,ra,348 # 2c8 <end_except>
-  jal x0, ISR_I2C
  174:	60c0006f          	j	780 <ISR_I2C>
 
 00000178 <ISR_UART_ASM>:
-  addi x2, x2, -EXCEPTION_STACK_SIZE
  178:	fa010113          	addi	sp,sp,-96
-  sw x1, 0x5C(x2)
  17c:	04112e23          	sw	ra,92(sp)
-  jal x1, store_regs
  180:	0d0000ef          	jal	ra,250 <store_regs>
-  la x1, end_except
  184:	00000097          	auipc	ra,0x0
  188:	14408093          	addi	ra,ra,324 # 2c8 <end_except>
-  jal x0, ISR_UART
  18c:	5f80006f          	j	784 <ISR_UART>
 
 00000190 <ISR_GPIO_ASM>:
-  addi x2, x2, -EXCEPTION_STACK_SIZE
  190:	fa010113          	addi	sp,sp,-96
-  sw x1, 0x5C(x2)
  194:	04112e23          	sw	ra,92(sp)
-  jal x1, store_regs
  198:	0b8000ef          	jal	ra,250 <store_regs>
-  la x1, end_except
  19c:	00000097          	auipc	ra,0x0
  1a0:	12c08093          	addi	ra,ra,300 # 2c8 <end_except>
-  jal x0, ISR_GPIO
  1a4:	5e40006f          	j	788 <ISR_GPIO>
 
 000001a8 <ISR_SPIM0_ASM>:
-  addi x2, x2, -EXCEPTION_STACK_SIZE
  1a8:	fa010113          	addi	sp,sp,-96
-  sw x1, 0x5C(x2)
  1ac:	04112e23          	sw	ra,92(sp)
-  jal x1, store_regs
  1b0:	0a0000ef          	jal	ra,250 <store_regs>
-  la x1, end_except
  1b4:	00000097          	auipc	ra,0x0
  1b8:	11408093          	addi	ra,ra,276 # 2c8 <end_except>
-  jal x0, ISR_SPIM0
  1bc:	5d00006f          	j	78c <ISR_SPIM0>
 
 000001c0 <ISR_SPIM1_ASM>:
-  addi x2, x2, -EXCEPTION_STACK_SIZE
  1c0:	fa010113          	addi	sp,sp,-96
-  sw x1, 0x5C(x2)
  1c4:	04112e23          	sw	ra,92(sp)
-  jal x1, store_regs
  1c8:	088000ef          	jal	ra,250 <store_regs>
-  la x1, end_except
  1cc:	00000097          	auipc	ra,0x0
  1d0:	0fc08093          	addi	ra,ra,252 # 2c8 <end_except>
-  jal x0, ISR_SPIM1
  1d4:	5bc0006f          	j	790 <ISR_SPIM1>
 
 000001d8 <ISR_TA_CMP_ASM>:
-  addi x2, x2, -EXCEPTION_STACK_SIZE
  1d8:	fa010113          	addi	sp,sp,-96
-  sw x1, 0x5C(x2)
  1dc:	04112e23          	sw	ra,92(sp)
-  jal x1, store_regs
  1e0:	070000ef          	jal	ra,250 <store_regs>
-  la x1, end_except
  1e4:	00000097          	auipc	ra,0x0
  1e8:	0e408093          	addi	ra,ra,228 # 2c8 <end_except>
-  jal x0, ISR_TA_CMP
  1ec:	5ac0006f          	j	798 <ISR_TA_CMP>
 
 000001f0 <ISR_TA_OVF_ASM>:
-  addi x2, x2, -EXCEPTION_STACK_SIZE
  1f0:	fa010113          	addi	sp,sp,-96
-  sw x1, 0x5C(x2)
  1f4:	04112e23          	sw	ra,92(sp)
-  jal x1, store_regs
  1f8:	058000ef          	jal	ra,250 <store_regs>
-  la x1, end_except
  1fc:	00000097          	auipc	ra,0x0
  200:	0cc08093          	addi	ra,ra,204 # 2c8 <end_except>
-  jal x0, ISR_TA_OVF
  204:	5900006f          	j	794 <ISR_TA_OVF>
 
 00000208 <ISR_TB_CMP_ASM>:
-  addi x2, x2, -EXCEPTION_STACK_SIZE
  208:	fa010113          	addi	sp,sp,-96
-  sw x1, 0x5C(x2)
  20c:	04112e23          	sw	ra,92(sp)
-  jal x1, store_regs
  210:	040000ef          	jal	ra,250 <store_regs>
-  la x1, end_except
  214:	00000097          	auipc	ra,0x0
  218:	0b408093          	addi	ra,ra,180 # 2c8 <end_except>
-  jal x0, ISR_TB_CMP
  21c:	5840006f          	j	7a0 <ISR_TB_CMP>
 
 00000220 <ISR_TB_OVF_ASM>:
-  addi x2, x2, -EXCEPTION_STACK_SIZE
  220:	fa010113          	addi	sp,sp,-96
-  sw x1, 0x5C(x2)
  224:	04112e23          	sw	ra,92(sp)
-  jal x1, store_regs
  228:	028000ef          	jal	ra,250 <store_regs>
-  la x1, end_except
  22c:	00000097          	auipc	ra,0x0
  230:	09c08093          	addi	ra,ra,156 # 2c8 <end_except>
-  jal x0, ISR_TB_OVF
  234:	5680006f          	j	79c <ISR_TB_OVF>
 
 00000238 <illegal_insn_handler>:
-  addi x2, x2, -EXCEPTION_STACK_SIZE
  238:	fa010113          	addi	sp,sp,-96
-  sw x1, 0x5C(x2)
  23c:	04112e23          	sw	ra,92(sp)
-  jal x1, store_regs
  240:	010000ef          	jal	ra,250 <store_regs>
-  la x1, end_except
  244:	00000097          	auipc	ra,0x0
  248:	08408093          	addi	ra,ra,132 # 2c8 <end_except>
-  jal x0, illegal_insn_handler_c
  24c:	4080006f          	j	654 <illegal_insn_handler_c>
 
 00000250 <store_regs>:
-  sw  x3, 0x00(x2)  // gp
  250:	00312023          	sw	gp,0(sp)
-  sw  x4, 0x04(x2)  // tp
  254:	00412223          	sw	tp,4(sp)
-  sw  x5, 0x08(x2)  // t0
  258:	00512423          	sw	t0,8(sp)
-  sw  x6, 0x0c(x2)  // t1
  25c:	00612623          	sw	t1,12(sp)
-  sw  x7, 0x10(x2)  // t2
  260:	00712823          	sw	t2,16(sp)
-  sw x10, 0x14(x2)  // a0
  264:	00a12a23          	sw	a0,20(sp)
-  sw x11, 0x18(x2)  // a1
  268:	00b12c23          	sw	a1,24(sp)
-  sw x12, 0x1c(x2)  // a2
  26c:	00c12e23          	sw	a2,28(sp)
-  sw x13, 0x20(x2)  // a3
  270:	02d12023          	sw	a3,32(sp)
-  sw x14, 0x24(x2)  // a4
  274:	02e12223          	sw	a4,36(sp)
-  sw x15, 0x28(x2)  // a5
  278:	02f12423          	sw	a5,40(sp)
-  sw x16, 0x2c(x2)  // a6
  27c:	03012623          	sw	a6,44(sp)
-  sw x17, 0x30(x2)  // a7
  280:	03112823          	sw	a7,48(sp)
-  sw x28, 0x34(x2)  // t3
  284:	03c12a23          	sw	t3,52(sp)
-  sw x29, 0x38(x2)  // t4
  288:	03d12c23          	sw	t4,56(sp)
-  sw x30, 0x3c(x2)  // t5
  28c:	03e12e23          	sw	t5,60(sp)
-  sw x31, 0x40(x2)  // t6
  290:	05f12023          	sw	t6,64(sp)
-  csrr x28, 0x7B0
  294:	7b002e73          	csrr	t3,lpstart0
-  csrr x29, 0x7B1
  298:	7b102ef3          	csrr	t4,lpend0
-  csrr x30, 0x7B2
  29c:	7b202f73          	csrr	t5,lpcount0
-  sw x28, 0x44(x2)  // lpstart[0]
  2a0:	05c12223          	sw	t3,68(sp)
-  sw x29, 0x48(x2)  // lpend[0]
  2a4:	05d12423          	sw	t4,72(sp)
-  sw x30, 0x4C(x2)  // lpcount[0]
  2a8:	05e12623          	sw	t5,76(sp)
-  csrr x28, 0x7B4
  2ac:	7b402e73          	csrr	t3,lpstart1
-  csrr x29, 0x7B5
  2b0:	7b502ef3          	csrr	t4,lpend1
-  csrr x30, 0x7B6
  2b4:	7b602f73          	csrr	t5,lpcount1
-  sw x28, 0x50(x2)  // lpstart[1]
  2b8:	05c12823          	sw	t3,80(sp)
-  sw x29, 0x54(x2)  // lpend[1]
  2bc:	05d12a23          	sw	t4,84(sp)
-  sw x30, 0x58(x2)  // lpcount[1]
  2c0:	05e12c23          	sw	t5,88(sp)
-  jalr x0, x1
  2c4:	00008067          	ret
 
 000002c8 <end_except>:
-  lw x28, 0x50(x2)  // lpstart[1]
  2c8:	05012e03          	lw	t3,80(sp)
-  lw x29, 0x54(x2)  // lpend[1]
  2cc:	05412e83          	lw	t4,84(sp)
-  lw x30, 0x58(x2)  // lpcount[1]
  2d0:	05812f03          	lw	t5,88(sp)
-  csrrw x0, 0x7B4, x28
  2d4:	7b4e1073          	csrw	lpstart1,t3
-  csrrw x0, 0x7B5, x29
  2d8:	7b5e9073          	csrw	lpend1,t4
-  csrrw x0, 0x7B6, x30
  2dc:	7b6f1073          	csrw	lpcount1,t5
-  lw x28, 0x44(x2)  // lpstart[0]
  2e0:	04412e03          	lw	t3,68(sp)
-  lw x29, 0x48(x2)  // lpend[0]
  2e4:	04812e83          	lw	t4,72(sp)
-  lw x30, 0x4C(x2)  // lpcount[0]
  2e8:	04c12f03          	lw	t5,76(sp)
-  csrrw x0, 0x7B0, x28
  2ec:	7b0e1073          	csrw	lpstart0,t3
-  csrrw x0, 0x7B1, x29
  2f0:	7b1e9073          	csrw	lpend0,t4
-  csrrw x0, 0x7B2, x30
  2f4:	7b2f1073          	csrw	lpcount0,t5
-  lw  x3, 0x00(x2)
  2f8:	00012183          	lw	gp,0(sp)
-  lw  x4, 0x04(x2)
  2fc:	00412203          	lw	tp,4(sp)
-  lw  x5, 0x08(x2)
  300:	00812283          	lw	t0,8(sp)
-  lw  x6, 0x0c(x2)
  304:	00c12303          	lw	t1,12(sp)
-  lw  x7, 0x10(x2)
  308:	01012383          	lw	t2,16(sp)
-  lw x10, 0x14(x2)
  30c:	01412503          	lw	a0,20(sp)
-  lw x11, 0x18(x2)
  310:	01812583          	lw	a1,24(sp)
-  lw x12, 0x1c(x2)
  314:	01c12603          	lw	a2,28(sp)
-  lw x13, 0x20(x2)
  318:	02012683          	lw	a3,32(sp)
-  lw x14, 0x24(x2)
  31c:	02412703          	lw	a4,36(sp)
-  lw x15, 0x28(x2)
  320:	02812783          	lw	a5,40(sp)
-  lw x16, 0x2c(x2)
  324:	02c12803          	lw	a6,44(sp)
-  lw x17, 0x30(x2)
  328:	03012883          	lw	a7,48(sp)
-  lw x28, 0x34(x2)
  32c:	03412e03          	lw	t3,52(sp)
-  lw x29, 0x38(x2)
  330:	03812e83          	lw	t4,56(sp)
-  lw x30, 0x3c(x2)
  334:	03c12f03          	lw	t5,60(sp)
-  lw x31, 0x40(x2)
  338:	04012f83          	lw	t6,64(sp)
-  lw  x1, 0x5C(x2)
  33c:	05c12083          	lw	ra,92(sp)
-  addi x2, x2, EXCEPTION_STACK_SIZE
  340:	06010113          	addi	sp,sp,96
-  mret
  344:	30200073          	mret
 
 00000348 <_fini>:
-  ret
  348:	00008067          	ret
 
 0000034c <__libc_init_array>:
