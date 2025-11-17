@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python2.7
 
 # ////////////////////////////////////////////////////////////////////////////////
 # // Company:        Multitherman Laboratory @ DEIS - University of Bologna     //
@@ -155,6 +155,5 @@ else:  # basic sflash
     # close all files
     ###############################################################################        
     sflash_stim.close()
-
 
 
